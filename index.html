@@ -216,15 +216,21 @@ label.btn{display:inline-block}
 .pk-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 .pk-msg{margin:2px 0 0;font-weight:700}
 .pack{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.flip{all:unset;position:relative;display:block;cursor:pointer;perspective:900px;height:200px}
+.flip{all:unset;position:relative;display:block;cursor:pointer;height:200px;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .flip:focus-visible{outline:3px solid var(--s);outline-offset:3px}
-.flip .back,.flip .front{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .55s cubic-bezier(.3,1.3,.5,1)}
+.flip .back,.flip .front{position:absolute;inset:0}
 .flip .back{border:3px solid var(--ink);display:grid;place-items:center;background-color:var(--s-plus);background-image:repeating-conic-gradient(from 0deg at 50% 50%,rgba(17,17,20,.12) 0deg 4deg,transparent 4deg 10deg)}
 .flip .back span{width:62px;height:62px;border-radius:50%;background:#fff;border:3px solid #111114;display:grid;place-items:center;font-family:var(--display);font-size:1.9rem;color:#111114}
-.flip .front{transform:rotateY(180deg)}
-.flip.on .back{transform:rotateY(180deg)}
-.flip.on .front{transform:rotateY(360deg)}
-.tc{position:relative;height:100%;box-sizing:border-box;border:3px solid var(--ink);background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:8px 4px;text-align:center;overflow:hidden}
+.flip .front{visibility:hidden}
+.flip.on .back{visibility:hidden}
+.flip.on .front{visibility:visible}
+.flip.turn{animation:fl1 .16s ease-in forwards}
+.flip.turn2{animation:fl2 .22s cubic-bezier(.2,1.5,.5,1)}
+@keyframes fl1{to{transform:scaleX(0)}}
+@keyframes fl2{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.pack-done{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pack-done p{margin:0;font-weight:700}
+.tc{position:relative;height:100%;box-sizing:border-box;border:3px solid var(--ink);background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:22px 4px 8px;text-align:center;overflow:hidden}
 .tc b{font-size:.78rem;line-height:1.2;overflow-wrap:anywhere}
 .tc small{font-size:.64rem;color:var(--muted);line-height:1.2}
 .tc .mono{width:52px;height:52px}
@@ -810,7 +816,7 @@ const X={
 "Prime Moment Papa":["u",["Prime Moment Papa Shake"],["Saitama","Zeno"]],
 "Lord Tepelius de Grote":["h",["Winter Mode"],["Prime Moment Papa","Saitama"]]
 };
-const APP_VERSION="2.4";
+const APP_VERSION="2.4.1";
 const BD={"Prime Moment Papa":"10-25","Lord Tepelius de Grote":"01-18",
 "Monkey D. Luffy":"05-05","Roronoa Zoro":"11-11","Portgas D. Ace":"01-01","Trafalgar Law":"10-06","Shanks":"03-09","Dracule Mihawk":"03-09","Whitebeard":"04-06","Kaido":"05-01","Big Mom":"02-15","Blackbeard":"08-03","Donquixote Doflamingo":"10-23","Charlotte Katakuri":"11-25","Akainu":"08-16","Aokiji":"09-21","Kizaru":"11-23","Monkey D. Garp":"05-02","Gol D. Roger":"12-31",
 "Naruto Uzumaki":"10-10","Sasuke Uchiha":"07-23","Kakashi Hatake":"09-15","Itachi Uchiha":"06-09","Minato Namikaze":"01-25","Jiraiya":"11-11","Might Guy":"01-01","Obito Uchiha":"02-10","Madara Uchiha":"12-24","Hashirama Senju":"10-23","Boruto Uzumaki":"03-27","Pain":"09-19",
@@ -1650,7 +1656,7 @@ function untilMidnight(){const n=new Date(),m=new Date(n);m.setHours(24,0,0,0);c
 const PT={
  nl:{tabPlay:"Spelen",cards:"Kaarten",fusion:"Fusie",packTitle:"Kaartenpakje",open:"Open pakje",packsN:n=>n===1?"Je hebt 1 pakje klaarliggen.":`Je hebt ${n} pakjes klaarliggen.`,
   next:(h,m)=>`Je volgende gratis pakje komt over ${h} uur en ${m} minuten.`,howGet:"Elke dag krijg je een gratis pakje. Na elke 10 gevechten bij Wie wint? krijg je een extra pakje.",
-  tapFlip:"Tik op een kaart om hem om te draaien",flipAll:"Alles omdraaien",newC:"NIEUW",album:"Album",of:(a,b)=>`${a} van ${b} verzameld`,
+  tapFlip:"Tik op een kaart om hem om te draaien",flipAll:"Alles omdraaien",packDone:"Alle kaarten staan in je album!",packClose:"Naar mijn album",newC:"NIEUW",album:"Album",of:(a,b)=>`${a} van ${b} verzameld`,
   fAll:"Alles",fOwn:"Verzameld",fMiss:"Ontbreekt",trade:"5 dubbele inruilen voor 1 pakje",dupN:n=>`Je hebt ${n} dubbele ${n===1?"kaart":"kaarten"}.`,
   fightsTo:n=>`Nog ${n} ${n===1?"gevecht":"gevechten"} tot een extra pakje.`,
   fuTitle:"Fusie-maker",fuIntro:"Kies twee characters en laat ze samensmelten, zoals de Fusion Dance in Dragon Ball.",fuBtn:"Fuseer!",fuName:"Naam van de fusie",
@@ -1660,7 +1666,7 @@ const PT={
   fuSame:n=>`Een fusie van ${n} met zichzelf. Dubbel zo sterk, en dubbel zo eigenwijs.`},
  en:{tabPlay:"Play",cards:"Cards",fusion:"Fusion",packTitle:"Card pack",open:"Open pack",packsN:n=>n===1?"You have 1 pack ready.":`You have ${n} packs ready.`,
   next:(h,m)=>`Your next free pack arrives in ${h} h ${m} min.`,howGet:"You get a free pack every day. Every 10 fights in Who wins? earns you an extra pack.",
-  tapFlip:"Tap a card to flip it",flipAll:"Flip all",newC:"NEW",album:"Album",of:(a,b)=>`${a} of ${b} collected`,
+  tapFlip:"Tap a card to flip it",flipAll:"Flip all",packDone:"All cards are in your album!",packClose:"Go to my album",newC:"NEW",album:"Album",of:(a,b)=>`${a} of ${b} collected`,
   fAll:"All",fOwn:"Collected",fMiss:"Missing",trade:"Trade 5 duplicates for 1 pack",dupN:n=>`You have ${n} duplicate ${n===1?"card":"cards"}.`,
   fightsTo:n=>`${n} more ${n===1?"fight":"fights"} until an extra pack.`,
   fuTitle:"Fusion maker",fuIntro:"Pick two characters and fuse them together, like the Fusion Dance in Dragon Ball.",fuBtn:"Fuse!",fuName:"Fusion name",
@@ -1675,7 +1681,7 @@ function renderCardsGame(){const t=pt(),P=pool(),own=P.filter(c=>G.own[c.n]).len
   const toFight=10-((G.fights||0)%10);
   let h=`<div class="panel pk"><div class="pk-head"><div><p class="mklab">${t.packTitle}</p><p class="pk-msg">${left?t.packsN(left):t.next(u.h,u.m)}</p></div><button class="btn primary fightbtn" type="button" id="openPack"${left?"":" disabled"}>${t.open}</button></div>
   <p class="note" style="margin:0">${t.howGet} ${t.fightsTo(toFight)}</p>`;
-  if(lastPack){h+=`<p class="note" style="margin:0">${t.tapFlip}</p><div class="pack">${lastPack.map((x,i)=>`<button type="button" class="flip" data-flip="${i}" aria-label="Kaart ${i+1}"><span class="back"><span>力</span></span><span class="front">${cardFace(x.c,x.isNew)}</span></button>`).join("")}</div><button class="btn" type="button" id="flipAll" style="align-self:flex-start">${t.flipAll}</button>`}
+  if(lastPack){h+=`<p class="note" style="margin:0">${t.tapFlip}</p><div class="pack">${lastPack.map((x,i)=>`<button type="button" class="flip" data-flip="${i}" aria-label="Kaart ${i+1}"><span class="back"><span>力</span></span><span class="front">${cardFace(x.c,x.isNew)}</span></button>`).join("")}</div><button class="btn" type="button" id="flipAll" style="align-self:flex-start">${t.flipAll}</button><div class="pack-done" id="packDone" hidden><p>${t.packDone}</p><button class="btn primary" type="button" id="packClose">${t.packClose}</button></div>`}
   h+=`</div><div class="panel"><div class="toprow"><p class="mklab">${t.album}</p><div class="seg2">${["all","own","miss"].map(f=>`<button type="button" data-af="${f}" aria-pressed="${albumFilter===f}">${t[{all:"fAll",own:"fOwn",miss:"fMiss"}[f]]}</button>`).join("")}</div></div>
   <div class="prog"><span style="width:${own/P.length*100}%"></span></div><p class="note" style="margin:0">${t.of(own,P.length)}${d?" · "+t.dupN(d):""}</p>
   ${d>=5?`<button class="btn" type="button" id="tradeDupes" style="align-self:flex-start">${t.trade}</button>`:""}
@@ -1716,12 +1722,18 @@ function renderPlay(){const el=$("#v-play");if(!el)return;const t=pt();
   const keepA=$("#fuA")&&$("#fuA").value,keepB=$("#fuB")&&$("#fuB").value;
   el.innerHTML=`<div class="seg2 big" role="group">${["cards","fusion"].map(v=>`<button type="button" data-pv="${v}" aria-pressed="${playView===v}">${t[v]}</button>`).join("")}</div>`+(playView==="cards"?renderCardsGame():renderFusion());
   if(playView==="fusion"){const a=$("#fuA"),b=$("#fuB");a.value=keepA||(C.find(c=>c.n==="Prime Moment Papa")||C[0]).id;b.value=keepB||(C.find(c=>c.n==="Goku")||C[1]).id;fuseStage();if(fuse)showFusion()}}
+function flipCard(el){if(el.classList.contains("on")||el.dataset.busy)return;
+  const fin=()=>{if([...document.querySelectorAll(".flip")].every(f=>f.classList.contains("on"))){const d=$("#packDone"),b=$("#flipAll");if(d)d.hidden=false;if(b)b.hidden=true}};
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches){el.classList.add("on");fin();return}
+  el.dataset.busy="1";el.classList.add("turn");
+  setTimeout(()=>{el.classList.remove("turn");el.classList.add("on","turn2");fin();setTimeout(()=>{el.classList.remove("turn2");delete el.dataset.busy},240)},170)}
 function cardsAfterFight(){G.fights=(G.fights||0)+1;if(G.fights%10===0)G.extra=(G.extra||0)+1;saveG()}
 document.addEventListener("click",e=>{
   const pv=e.target.closest("[data-pv]");if(pv){playView=pv.dataset.pv;renderPlay();return}
   if(e.target.id==="openPack"){openPack();return}
-  const fl=e.target.closest("[data-flip]");if(fl){fl.classList.add("on");return}
-  if(e.target.id==="flipAll"){document.querySelectorAll(".flip").forEach(f=>f.classList.add("on"));return}
+  const fl=e.target.closest("[data-flip]");if(fl){flipCard(fl);return}
+  if(e.target.id==="flipAll"){document.querySelectorAll(".flip").forEach((f,i)=>setTimeout(()=>flipCard(f),i*150));return}
+  if(e.target.id==="packClose"){lastPack=null;albumFilter="all";renderPlay();const a=document.querySelector(".album");if(a)a.scrollIntoView({behavior:"smooth",block:"start"});return}
   const af=e.target.closest("[data-af]");if(af){albumFilter=af.dataset.af;lastPack=null;renderPlay();return}
   if(e.target.id==="tradeDupes"){let need=5;for(const k of Object.keys(G.own)){while(need>0&&G.own[k]>1){G.own[k]--;need--}if(!need)break}if(!need){G.extra=(G.extra||0)+1;saveG();lastPack=null;renderPlay()}return}
   if(e.target.id==="fuGo"){doFuse();return}
