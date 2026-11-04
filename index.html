@@ -268,6 +268,10 @@ details.spoil[open] summary{margin-bottom:6px}
 .langs button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 .langs button:focus-visible{outline:3px solid var(--s);outline-offset:2px}
 .hero .eyebrow{padding-right:clamp(112px,20vw,130px)}
+@media (max-width:700px){
+  .wrap>.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100%;overflow:visible}
+  .wrap>.tabs button{display:flex;align-items:center;justify-content:center;text-align:center;padding:9px 3px;font-family:var(--body);font-weight:700;font-size:clamp(.66rem,3.2vw,.86rem);letter-spacing:0;white-space:normal;line-height:1.15;min-width:0;overflow-wrap:anywhere}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 
@@ -736,7 +740,7 @@ const X={
 "Prime Moment Papa":["u",["Prime Moment Papa Shake"],["Saitama","Zeno"]],
 "Lord Tepelius de Grote":["h",["Winter Mode"],["Prime Moment Papa","Saitama"]]
 };
-const APP_VERSION="2.2.2";
+const APP_VERSION="2.2.3";
 const BD={"Prime Moment Papa":"10-25","Lord Tepelius de Grote":"01-18",
 "Monkey D. Luffy":"05-05","Roronoa Zoro":"11-11","Portgas D. Ace":"01-01","Trafalgar Law":"10-06","Shanks":"03-09","Dracule Mihawk":"03-09","Whitebeard":"04-06","Kaido":"05-01","Big Mom":"02-15","Blackbeard":"08-03","Donquixote Doflamingo":"10-23","Charlotte Katakuri":"11-25","Akainu":"08-16","Aokiji":"09-21","Kizaru":"11-23","Monkey D. Garp":"05-02","Gol D. Roger":"12-31",
 "Naruto Uzumaki":"10-10","Sasuke Uchiha":"07-23","Kakashi Hatake":"09-15","Itachi Uchiha":"06-09","Minato Namikaze":"01-25","Jiraiya":"11-11","Might Guy":"01-01","Obito Uchiha":"02-10","Madara Uchiha":"12-24","Hashirama Senju":"10-23","Boruto Uzumaki":"03-27","Pain":"09-19",
