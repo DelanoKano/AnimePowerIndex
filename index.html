@@ -49,14 +49,19 @@ h1 em{font-style:normal;background:var(--ink);color:var(--paper);padding:.04em .
 .hero p.lead{margin:0;max-width:56ch;color:var(--muted)}
 
 .tabs{display:flex;gap:0;border:3px solid var(--ink);width:max-content;max-width:100%;overflow-x:auto}
-.tabs button{all:unset;cursor:pointer;padding:10px 16px;font-family:var(--body);font-weight:700;font-size:.92rem;white-space:nowrap;border-left:3px solid var(--ink)}
+.tabs button{all:unset;cursor:pointer;padding:12px 22px;font-family:var(--body);font-weight:700;font-size:1.02rem;white-space:nowrap;border-left:3px solid var(--ink)}
 .tabs button:first-child{border-left:0}
 .tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper)}
 .tabs button:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--s);outline-offset:2px}
 
 .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .toolbar input,.toolbar select{border:2px solid var(--ink);border-radius:0;padding:8px 10px;background:var(--paper);min-width:0}
-.toolbar input{flex:1 1 220px}
+.toolbar input{flex:1 1 240px}
+.toolbar select,.chips select{padding:9px 10px}
+.toolbar>.chips{flex:1 1 220px;min-width:0;max-width:340px}
+.toolbar>.chips select{width:100%}
+.toolbar>input{flex:2 1 240px}
+@media (max-width:700px){.toolbar>#sort,.toolbar>.chips{flex:1 1 140px;max-width:none}.toolbar>.chips select,.toolbar>#sort{width:100%;max-width:none}}
 .chips{display:flex;gap:6px;flex-wrap:wrap}
 .chips select{border:2px solid var(--ink);border-radius:0;padding:8px 10px;background:var(--paper);max-width:100%;font-weight:700}
 .chip{all:unset;cursor:pointer;border:2px solid var(--ink);padding:3px 10px;font-size:.82rem;font-weight:700;background:var(--paper)}
@@ -185,6 +190,8 @@ ul.fights li b{font-family:var(--display);font-weight:400;font-size:.78rem;backg
 .cotd>*{margin-left:8px}
 .cotd .rl{background:var(--ink);color:var(--paper)}
 .cotd-in{display:flex;align-items:center;gap:12px}
+.cotd-in .who{flex:0 1 auto}
+.cotd-in .tier{align-self:center}
 .cotd-in .who h3{font-size:1.4rem}
 .ver{margin:8px 0 0;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--muted)}
 .bdbanner{border:3px solid var(--ink);padding:10px 14px;margin-bottom:12px;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;background:repeating-linear-gradient(135deg,var(--paper) 0 10px,var(--tone) 10px 20px)}
@@ -437,8 +444,8 @@ label.btn{display:inline-block}
         <option value="techniek" data-i18n="s3">Sorteer: techniek</option>
         <option value="slimheid" data-i18n="s4">Sorteer: slimheid</option>
       </select>
+      <div class="chips" id="chips"></div>
     </div>
-    <div class="chips" id="chips" style="margin-top:10px"></div>
     <div class="countrow"><p class="count" id="count"></p><div class="seg2" id="viewSeg" role="group"><button type="button" data-view="big" aria-pressed="true" data-i18n="vBig">Groot</button><button type="button" data-view="small" aria-pressed="false" data-i18n="vSmall">Compact</button></div></div>
     <div class="grid" id="grid"></div>
   </section>
@@ -873,7 +880,7 @@ const X={
 "Prime Moment Papa":["u",["Prime Moment Papa Shake"],["Saitama","Zeno"]],
 "Lord Tepelius de Grote":["h",["Winter Mode"],["Prime Moment Papa","Saitama"]]
 };
-const APP_VERSION="2.7";
+const APP_VERSION="2.7.1";
 const BD={"Prime Moment Papa":"10-25","Lord Tepelius de Grote":"01-18",
 "Monkey D. Luffy":"05-05","Roronoa Zoro":"11-11","Portgas D. Ace":"01-01","Trafalgar Law":"10-06","Shanks":"03-09","Dracule Mihawk":"03-09","Whitebeard":"04-06","Kaido":"05-01","Big Mom":"02-15","Blackbeard":"08-03","Donquixote Doflamingo":"10-23","Charlotte Katakuri":"11-25","Akainu":"08-16","Aokiji":"09-21","Kizaru":"11-23","Monkey D. Garp":"05-02","Gol D. Roger":"12-31",
 "Naruto Uzumaki":"10-10","Sasuke Uchiha":"07-23","Kakashi Hatake":"09-15","Itachi Uchiha":"06-09","Minato Namikaze":"01-25","Jiraiya":"11-11","Might Guy":"01-01","Obito Uchiha":"02-10","Madara Uchiha":"12-24","Hashirama Senju":"10-23","Boruto Uzumaki":"03-27","Pain":"09-19",
