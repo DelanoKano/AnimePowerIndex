@@ -292,6 +292,19 @@ label.btn{display:inline-block}
 .dupchip{border:2px solid var(--ink);padding:2px 8px;font-size:.78rem;font-weight:700;background:var(--paper)}
 .dupchip.r-leg{box-shadow:inset 0 -3px 0 var(--s-plus)}.dupchip.r-epic{box-shadow:inset 0 -3px 0 var(--s)}.dupchip.r-rare{box-shadow:inset 0 -3px 0 var(--a)}
 .note.small{font-size:.74rem}
+.welcome{border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);background:var(--paper);padding:14px;margin-bottom:16px;display:flex;flex-direction:column;gap:10px}
+.w-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.w-head b{font-family:var(--display);font-weight:400;font-size:1.25rem;line-height:1.15}
+.w-x{all:unset;cursor:pointer;width:32px;height:32px;display:grid;place-items:center;border:2px solid var(--ink);font-weight:700;flex:none}
+.w-x:focus-visible,.w-it:focus-visible,.helpbtn:focus-visible{outline:3px solid var(--s);outline-offset:2px}
+.w-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.w-it{min-width:0}
+@media (max-width:420px){.w-it{padding:8px 9px}.w-it b{font-size:.86rem}.w-it span{font-size:.76rem}}
+.w-it{all:unset;cursor:pointer;border:2px solid var(--ink);padding:10px 12px;display:flex;flex-direction:column;gap:3px;background:var(--paper)}
+.w-it:hover{background:var(--tone)}
+.w-it b{font-size:.95rem}
+.w-it span{font-size:.84rem;color:var(--muted);line-height:1.4}
+.helpbtn{all:unset;cursor:pointer;text-decoration:underline;text-underline-offset:3px;color:var(--ink)}
 .empty{border:3px dashed var(--ink);padding:24px;text-align:center;margin:0}
 
 .tierlist{display:flex;flex-direction:column;border:3px solid var(--ink)}
@@ -383,7 +396,7 @@ label.btn{display:inline-block}
     <h1 data-i18n-html="title">Anime <em>Krachtindex</em></h1>
     <p class="lead" data-i18n="lead">De sterkste anime characters op een rij: wat ze kunnen, waar ze kwetsbaar zijn en wie er wint als ze elkaar tegenkomen.</p>
     <p class="credit">Made by <b>Della</b></p>
-    <p class="ver" id="ver"></p>
+    <p class="ver"><span id="ver"></span> · <button type="button" class="helpbtn" id="helpBtn" data-i18n="help">Hoe werkt het?</button></p>
   </header>
 
   <div class="tabs" role="tablist">
@@ -395,6 +408,7 @@ label.btn{display:inline-block}
   </div>
 
   <section id="v-cards">
+    <div id="welcome"></div>
     <div id="cotd"></div>
     <div class="toolbar">
       <input id="q" type="search" placeholder="Zoek op naam, anime of kracht" aria-label="Zoeken" autocomplete="off" data-i18n-ph="search">
@@ -514,7 +528,8 @@ const L={
   winP:(w,k,m,l)=>`${w} wint op ${k} van de 5 eigenschappen. Maar let op het minpunt van ${w}: ${m}. Daar kan ${l} zijn kans pakken.`,
   scoreLine:(a,b)=>`Krachtscore ${a} tegen ${b}.`,
   fight:"Vechten!",rematch:"Rematch!",oddsL:"Winkans",tallyL:(n,a,x,b,y)=>`Stand na ${n} ${n===1?"gevecht":"gevechten"}: ${a} ${x} – ${y} ${b}`,draws:n=>n?` (${n}× gelijk)`:"",upsetH:n=>`Stunt! ${n} wint tegen de verwachting in`,kickU:["De grootste stunt van het jaar","Niemand zag dit aankomen","Tegen alle verwachtingen in"],pending:"Tik op Vechten! om te zien wie wint.",winnerW:"WINNAAR",drawW:"GELIJK",booms:["BAM!","POW!","DOEF!","KRAK!","WHAM!"],
-  tabPlay:"Spelen",tabMake:"Maak je eigen",mkTitle:"Maak je eigen character",mkIntro:"Je eigen characters worden op dit apparaat bewaard en doen overal mee: in de ranking, de tierlijst en bij Wie wint?",
+  tabPlay:"Spelen",tabMake:"Maak je eigen",help:"Hoe werkt het?",wTitle:"Welkom bij de Krachtindex!",wClose:"Begrepen",
+  wItems:[["cards","Characters","Hier ben je nu. Tik op een naam voor het verhaal, de krachten en spoilers."],["vs","Wie wint?","Laat twee characters vechten en lees het gevechtsverhaal."],["play","Spelen","Verzamel kaarten met munten en maak fusies."],["make","Maak je eigen","Zet jezelf of je vrienden in de app, met foto."]],mkTitle:"Maak je eigen character",mkIntro:"Je eigen characters worden op dit apparaat bewaard en doen overal mee: in de ranking, de tierlijst en bij Wie wint?",
   fName:"Naam",fAnime:"Uit welke anime of groep?",defAnime:"Mijn characters",fK:"Totale kracht (bepaalt de ranking)",fStats:"Scores",fRole:"Rol",
   fP:"Krachten (één per regel)",fM:"Minpunten (één per regel)",fForms:"Vormen en transformaties (scheid met komma's)",fFights:"Bekende gevechten (scheid met komma's)",fBio:"Verhaal (optioneel)",fPhoto:"Foto (optioneel)",pickPhoto:"Foto kiezen",changePhoto:"Andere foto",rmPhoto:"Foto weghalen",photoHelp:"De foto wordt klein gemaakt en op dit apparaat bewaard. Deel je het character, dan gaat de foto mee.",photoLocal:"Deze foto staat alleen op dit apparaat.",photoErr:"Deze foto kon niet worden geladen. Probeer een andere.",photoFull:"Je telefoon heeft geen ruimte meer voor deze foto. Haal eerst een andere foto weg.",photoH:"Foto",phBio:"Wie is dit? Waar komt hij vandaan en wat wil hij bereiken?",
   save:"Opslaan",update:"Wijzigingen opslaan",cancel:"Annuleren",preview:"Voorbeeld",mine:"Mijn characters",none:"Je hebt nog geen eigen characters. Maak er hierboven een.",
@@ -536,7 +551,8 @@ const L={
   winP:(w,k,m,l)=>`${w} wins on ${k} of the 5 stats. But watch out for ${w}'s weakness: ${m}. That's where ${l} could take their chance.`,
   scoreLine:(a,b)=>`Power score ${a} vs ${b}.`,
   fight:"Fight!",rematch:"Rematch!",oddsL:"Win chance",tallyL:(n,a,x,b,y)=>`Score after ${n} ${n===1?"fight":"fights"}: ${a} ${x} – ${y} ${b}`,draws:n=>n?` (${n} draws)`:"",upsetH:n=>`Upset! ${n} wins against the odds`,kickU:["The upset of the year","Nobody saw this coming","Against all odds"],pending:"Tap Fight! to see who wins.",winnerW:"WINNER",drawW:"DRAW",booms:["BAM!","POW!","BOOM!","CRACK!","WHAM!"],
-  tabPlay:"Play",tabMake:"Create",mkTitle:"Create your own character",mkIntro:"Your own characters are saved on this device and join everything: the ranking, the tier list and Who wins?",
+  tabPlay:"Play",tabMake:"Create",help:"How does it work?",wTitle:"Welcome to the Power Index!",wClose:"Got it",
+  wItems:[["cards","Characters","You're here now. Tap a name for the story, powers and spoilers."],["vs","Who wins?","Make two characters fight and read the battle story."],["play","Play","Collect cards with coins and create fusions."],["make","Create","Add yourself or your friends to the app, with a photo."]],mkTitle:"Create your own character",mkIntro:"Your own characters are saved on this device and join everything: the ranking, the tier list and Who wins?",
   fName:"Name",fAnime:"From which anime or group?",defAnime:"My characters",fK:"Overall power (sets the ranking)",fStats:"Stats",fRole:"Role",
   fP:"Powers (one per line)",fM:"Weaknesses (one per line)",fForms:"Forms and transformations (separate with commas)",fFights:"Famous fights (separate with commas)",fBio:"Story (optional)",fPhoto:"Photo (optional)",pickPhoto:"Choose photo",changePhoto:"Change photo",rmPhoto:"Remove photo",photoHelp:"The photo is shrunk and saved on this device. If you share the character, the photo goes along.",photoLocal:"This photo is only saved on this device.",photoErr:"This photo couldn't be loaded. Try another one.",photoFull:"Your phone has no room left for this photo. Remove another photo first.",photoH:"Photo",phBio:"Who is this? Where do they come from and what do they want?",
   save:"Save",update:"Save changes",cancel:"Cancel",preview:"Preview",mine:"My characters",none:"You don't have any characters yet. Create one above.",
@@ -840,7 +856,7 @@ const X={
 "Prime Moment Papa":["u",["Prime Moment Papa Shake"],["Saitama","Zeno"]],
 "Lord Tepelius de Grote":["h",["Winter Mode"],["Prime Moment Papa","Saitama"]]
 };
-const APP_VERSION="2.5";
+const APP_VERSION="2.6";
 const BD={"Prime Moment Papa":"10-25","Lord Tepelius de Grote":"01-18",
 "Monkey D. Luffy":"05-05","Roronoa Zoro":"11-11","Portgas D. Ace":"01-01","Trafalgar Law":"10-06","Shanks":"03-09","Dracule Mihawk":"03-09","Whitebeard":"04-06","Kaido":"05-01","Big Mom":"02-15","Blackbeard":"08-03","Donquixote Doflamingo":"10-23","Charlotte Katakuri":"11-25","Akainu":"08-16","Aokiji":"09-21","Kizaru":"11-23","Monkey D. Garp":"05-02","Gol D. Roger":"12-31",
 "Naruto Uzumaki":"10-10","Sasuke Uchiha":"07-23","Kakashi Hatake":"09-15","Itachi Uchiha":"06-09","Minato Namikaze":"01-25","Jiraiya":"11-11","Might Guy":"01-01","Obito Uchiha":"02-10","Madara Uchiha":"12-24","Hashirama Senju":"10-23","Boruto Uzumaki":"03-27","Pain":"09-19",
@@ -1489,6 +1505,17 @@ function renderCotd(){const t=tr(),d=new Date(),key=d.getFullYear()+"-"+(d.getMo
   <div class="cotd-in">${badge(c)}<div class="who"><span class="rank">#${c.r}</span><h3>${esc(c.n)}</h3><p>${esc(c.a)}</p></div><span class="tier t-${tcls(c.t)}">${c.t}</span></div>
   <p class="bio">${esc(bioOf(c))}</p>
   <div class="mkbtns"><button class="btn" type="button" data-go="${c.id}">${t.viewCard}</button><button class="btn primary" type="button" data-cotdfight="${c.id}">${t.cotdFight}</button></div></div>`}
+let welcomeOn=true;try{welcomeOn=localStorage.getItem("ak-welcome")!=="1"}catch(e){}
+function renderWelcome(){const el=$("#welcome");if(!el)return;if(!welcomeOn){el.innerHTML="";return}const t=tr();
+  el.innerHTML=`<div class="welcome"><div class="w-head"><b>${t.wTitle}</b><button type="button" class="w-x" id="wClose" aria-label="${t.wClose}">✕</button></div>
+  <div class="w-list">${t.wItems.map(([v,h,d])=>`<button type="button" class="w-it" data-wgo="${v}"><b>${h} →</b><span>${d}</span></button>`).join("")}</div>
+  <button class="btn" type="button" id="wOk" style="align-self:flex-start">${t.wClose}</button></div>`}
+function closeWelcome(){welcomeOn=false;try{localStorage.setItem("ak-welcome","1")}catch(e){}renderWelcome()}
+document.addEventListener("click",e=>{
+  if(e.target.id==="wClose"||e.target.id==="wOk"){closeWelcome();return}
+  const wg=e.target.closest("[data-wgo]");if(wg){const v=wg.dataset.wgo;closeWelcome();if(v!=="cards"){show(v);window.scrollTo(0,0)}else{const g=$("#grid");if(g)g.scrollIntoView({behavior:"smooth",block:"start"})}return}
+  if(e.target.id==="helpBtn"){welcomeOn=true;show("cards");renderWelcome();const w=$("#welcome");if(w)w.scrollIntoView({behavior:"smooth",block:"start"});return}
+});
 function applyLang(){
   const t=tr();document.documentElement.lang=lang;
   document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=t[el.dataset.i18n]);
@@ -1499,7 +1526,7 @@ function applyLang(){
   if(document.getElementById("modeBtn"))syncMode();
   $("#ver").textContent=`${t.version} ${APP_VERSION}`;
   $("#eyebrow").textContent=`Power ranking · ${C.length} characters · ${new Set(C.map(c=>c.a)).size} anime`;
-  renderChips();renderCards();renderVs();renderMake();renderCotd();renderPlay();
+  renderChips();renderCards();renderVs();renderMake();renderCotd();renderPlay();renderWelcome();
 }
 function show(v){
   document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===v));
