@@ -201,6 +201,67 @@ details.spoil[open] summary{margin-bottom:6px}
 .phrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .phrow .mono{width:56px;height:56px}
 label.btn{display:inline-block}
+.panel{border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);background:var(--paper);padding:14px;display:flex;flex-direction:column;gap:10px;margin-bottom:16px;min-width:0}
+.prog{height:12px;border:2px solid var(--ink);background:var(--paper)}
+.prog span{display:block;height:100%;background:var(--ink)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn[disabled]:hover{background:var(--paper);color:var(--ink)}
+.seg2{display:flex;border:2px solid var(--ink);width:max-content;max-width:100%}
+.seg2 button{all:unset;cursor:pointer;padding:5px 10px;font-weight:700;font-size:.82rem}
+.seg2 button+button{border-left:2px solid var(--ink)}
+.seg2 button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.seg2 button:focus-visible{outline:3px solid var(--s);outline-offset:2px}
+.seg2.big{margin-bottom:14px;border-width:3px}
+.seg2.big button{padding:8px 20px;font-family:var(--display);font-weight:400;font-size:1rem}
+.pk-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.pk-msg{margin:2px 0 0;font-weight:700}
+.pack{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.flip{all:unset;position:relative;display:block;cursor:pointer;perspective:900px;height:200px}
+.flip:focus-visible{outline:3px solid var(--s);outline-offset:3px}
+.flip .back,.flip .front{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .55s cubic-bezier(.3,1.3,.5,1)}
+.flip .back{border:3px solid var(--ink);display:grid;place-items:center;background-color:var(--s-plus);background-image:repeating-conic-gradient(from 0deg at 50% 50%,rgba(17,17,20,.12) 0deg 4deg,transparent 4deg 10deg)}
+.flip .back span{width:62px;height:62px;border-radius:50%;background:#fff;border:3px solid #111114;display:grid;place-items:center;font-family:var(--display);font-size:1.9rem;color:#111114}
+.flip .front{transform:rotateY(180deg)}
+.flip.on .back{transform:rotateY(180deg)}
+.flip.on .front{transform:rotateY(360deg)}
+.tc{position:relative;height:100%;box-sizing:border-box;border:3px solid var(--ink);background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:8px 4px;text-align:center;overflow:hidden}
+.tc b{font-size:.78rem;line-height:1.2;overflow-wrap:anywhere}
+.tc small{font-size:.64rem;color:var(--muted);line-height:1.2}
+.tc .mono{width:52px;height:52px}
+.tc .mono span{width:34px;height:34px;font-size:.85rem}
+.tc-r{font-family:var(--mono);font-size:.56rem;text-transform:uppercase;letter-spacing:.08em}
+.tc-new{position:absolute;top:0;right:0;background:var(--s);color:#fff;font-size:.58rem;font-weight:700;padding:2px 5px}
+.r-leg.tc,.r-leg.ac{box-shadow:inset 0 0 0 4px var(--s-plus)}
+.r-epic.tc,.r-epic.ac{box-shadow:inset 0 0 0 4px var(--s)}
+.r-rare.tc,.r-rare.ac{box-shadow:inset 0 0 0 4px var(--a)}
+.flip.on .r-leg.tc::after{content:"";position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.75) 50%,transparent 60%);animation:shine 1.6s ease-in-out .4s 2}
+@keyframes shine{0%{transform:translateX(-60%)}100%{transform:translateX(60%)}}
+.album{display:grid;grid-template-columns:repeat(auto-fill,minmax(94px,1fr));gap:8px}
+.ac{all:unset;box-sizing:border-box;cursor:pointer;position:relative;border:2px solid var(--ink);padding:10px 4px 8px;display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;min-width:0;background:var(--paper)}
+.ac:focus-visible{outline:3px solid var(--s);outline-offset:2px}
+.ac b{font-size:.68rem;line-height:1.15;overflow-wrap:anywhere}
+.ac .mono{width:42px;height:42px}
+.ac .mono span{width:28px;height:28px;font-size:.72rem}
+.ac.miss{border-style:dashed;cursor:default;opacity:.7}
+.ac .tier{font-size:.62rem;padding:0 5px}
+.mono.q{background:var(--tone);background-image:none}
+.mono.q span{background:var(--paper);color:var(--muted)}
+.ac-n{position:absolute;top:3px;right:5px;font-family:var(--mono);font-size:.64rem;font-weight:500}
+.fu-h{margin:0;font-family:var(--display);font-weight:400;font-size:1.4rem;line-height:1.1}
+.fuse-stage{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:6px;min-height:140px;border:3px solid var(--ink);position:relative;overflow:hidden;background-image:repeating-conic-gradient(from 0deg at 50% 50%,rgba(127,127,127,.12) 0deg 1deg,transparent 1deg 8deg)}
+.fs{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;padding:10px 4px;transition:transform .85s cubic-bezier(.6,0,.4,1);min-width:0}
+.fs .mono{width:66px;height:66px}
+.fs b{font-size:.82rem;line-height:1.2;overflow-wrap:anywhere}
+.fs-x{font-family:var(--display);font-size:1.6rem;transition:opacity .3s}
+.fuse-stage.go .fs.l{transform:translateX(60%) rotate(540deg) scale(.6)}
+.fuse-stage.go .fs.r{transform:translateX(-60%) rotate(-540deg) scale(.6)}
+.fuse-stage.go .fs-x{opacity:0}
+.fuse-stage.done{grid-template-columns:1fr;place-items:center;background-color:var(--s-plus)}
+.fs-flash{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px;animation:burst2 .5s cubic-bezier(.2,1.6,.4,1)}
+.fs-flash b{font-family:var(--display);font-weight:400;font-size:1.7rem;color:#111114;line-height:1.1;text-align:center}
+.fs-flash .mono{width:84px;height:84px}
+@keyframes burst2{0%{transform:scale(.2)}100%{transform:scale(1)}}
+@media (max-width:420px){.flip{height:180px}.tc .mono{width:44px;height:44px}.tc .mono span{width:30px;height:30px}}
 .empty{border:3px dashed var(--ink);padding:24px;text-align:center;margin:0}
 
 .tierlist{display:flex;flex-direction:column;border:3px solid var(--ink)}
@@ -275,8 +336,8 @@ label.btn{display:inline-block}
 .langs button:focus-visible{outline:3px solid var(--s);outline-offset:2px}
 .hero .eyebrow{padding-right:clamp(112px,20vw,130px)}
 @media (max-width:700px){
-  .wrap>.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100%;overflow:visible}
-  .wrap>.tabs button{display:flex;align-items:center;justify-content:center;text-align:center;padding:9px 3px;font-family:var(--body);font-weight:700;font-size:clamp(.66rem,3.2vw,.86rem);letter-spacing:0;white-space:normal;line-height:1.15;min-width:0;overflow-wrap:anywhere}
+  .wrap>.tabs{display:flex;width:100%;overflow:visible}
+  .wrap>.tabs button{flex:1 1 auto;display:flex;align-items:center;justify-content:center;text-align:center;padding:9px 4px;font-family:var(--body);font-weight:700;font-size:clamp(.62rem,3.05vw,.86rem);letter-spacing:0;white-space:normal;line-height:1.15;min-width:0;overflow-wrap:normal;word-break:keep-all}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
@@ -299,6 +360,7 @@ label.btn{display:inline-block}
     <button role="tab" data-v="cards" aria-selected="true" data-i18n="tabCards">Characters</button>
     <button role="tab" data-v="tiers" aria-selected="false" data-i18n="tabTiers">Tierlijst</button>
     <button role="tab" data-v="vs" aria-selected="false" data-i18n="tabVs">Wie wint?</button>
+    <button role="tab" data-v="play" aria-selected="false" data-i18n="tabPlay">Spelen</button>
     <button role="tab" data-v="make" aria-selected="false" data-i18n="tabMake">Maak je eigen</button>
   </div>
 
@@ -324,6 +386,8 @@ label.btn{display:inline-block}
     <div class="tierlist" id="tierlist"></div>
     <p class="note" style="margin-top:10px" data-i18n="tierNote">Tik op een naam om het character te bekijken.</p>
   </section>
+
+  <section id="v-play" hidden></section>
 
   <section id="v-make" hidden></section>
 
@@ -420,7 +484,7 @@ const L={
   winP:(w,k,m,l)=>`${w} wint op ${k} van de 5 eigenschappen. Maar let op het minpunt van ${w}: ${m}. Daar kan ${l} zijn kans pakken.`,
   scoreLine:(a,b)=>`Krachtscore ${a} tegen ${b}.`,
   fight:"Vechten!",rematch:"Rematch!",oddsL:"Winkans",tallyL:(n,a,x,b,y)=>`Stand na ${n} ${n===1?"gevecht":"gevechten"}: ${a} ${x} – ${y} ${b}`,draws:n=>n?` (${n}× gelijk)`:"",upsetH:n=>`Stunt! ${n} wint tegen de verwachting in`,kickU:["De grootste stunt van het jaar","Niemand zag dit aankomen","Tegen alle verwachtingen in"],pending:"Tik op Vechten! om te zien wie wint.",winnerW:"WINNAAR",drawW:"GELIJK",booms:["BAM!","POW!","DOEF!","KRAK!","WHAM!"],
-  tabMake:"Maak je eigen",mkTitle:"Maak je eigen character",mkIntro:"Je eigen characters worden op dit apparaat bewaard en doen overal mee: in de ranking, de tierlijst en bij Wie wint?",
+  tabPlay:"Spelen",tabMake:"Maak je eigen",mkTitle:"Maak je eigen character",mkIntro:"Je eigen characters worden op dit apparaat bewaard en doen overal mee: in de ranking, de tierlijst en bij Wie wint?",
   fName:"Naam",fAnime:"Uit welke anime of groep?",defAnime:"Mijn characters",fK:"Totale kracht (bepaalt de ranking)",fStats:"Scores",fRole:"Rol",
   fP:"Krachten (één per regel)",fM:"Minpunten (één per regel)",fForms:"Vormen en transformaties (scheid met komma's)",fFights:"Bekende gevechten (scheid met komma's)",fBio:"Verhaal (optioneel)",fPhoto:"Foto (optioneel)",pickPhoto:"Foto kiezen",changePhoto:"Andere foto",rmPhoto:"Foto weghalen",photoHelp:"De foto wordt klein gemaakt en op dit apparaat bewaard. Deel je het character, dan gaat de foto mee.",photoLocal:"Deze foto staat alleen op dit apparaat.",photoErr:"Deze foto kon niet worden geladen. Probeer een andere.",photoFull:"Je telefoon heeft geen ruimte meer voor deze foto. Haal eerst een andere foto weg.",photoH:"Foto",phBio:"Wie is dit? Waar komt hij vandaan en wat wil hij bereiken?",
   save:"Opslaan",update:"Wijzigingen opslaan",cancel:"Annuleren",preview:"Voorbeeld",mine:"Mijn characters",none:"Je hebt nog geen eigen characters. Maak er hierboven een.",
@@ -442,7 +506,7 @@ const L={
   winP:(w,k,m,l)=>`${w} wins on ${k} of the 5 stats. But watch out for ${w}'s weakness: ${m}. That's where ${l} could take their chance.`,
   scoreLine:(a,b)=>`Power score ${a} vs ${b}.`,
   fight:"Fight!",rematch:"Rematch!",oddsL:"Win chance",tallyL:(n,a,x,b,y)=>`Score after ${n} ${n===1?"fight":"fights"}: ${a} ${x} – ${y} ${b}`,draws:n=>n?` (${n} draws)`:"",upsetH:n=>`Upset! ${n} wins against the odds`,kickU:["The upset of the year","Nobody saw this coming","Against all odds"],pending:"Tap Fight! to see who wins.",winnerW:"WINNER",drawW:"DRAW",booms:["BAM!","POW!","BOOM!","CRACK!","WHAM!"],
-  tabMake:"Create",mkTitle:"Create your own character",mkIntro:"Your own characters are saved on this device and join everything: the ranking, the tier list and Who wins?",
+  tabPlay:"Play",tabMake:"Create",mkTitle:"Create your own character",mkIntro:"Your own characters are saved on this device and join everything: the ranking, the tier list and Who wins?",
   fName:"Name",fAnime:"From which anime or group?",defAnime:"My characters",fK:"Overall power (sets the ranking)",fStats:"Stats",fRole:"Role",
   fP:"Powers (one per line)",fM:"Weaknesses (one per line)",fForms:"Forms and transformations (separate with commas)",fFights:"Famous fights (separate with commas)",fBio:"Story (optional)",fPhoto:"Photo (optional)",pickPhoto:"Choose photo",changePhoto:"Change photo",rmPhoto:"Remove photo",photoHelp:"The photo is shrunk and saved on this device. If you share the character, the photo goes along.",photoLocal:"This photo is only saved on this device.",photoErr:"This photo couldn't be loaded. Try another one.",photoFull:"Your phone has no room left for this photo. Remove another photo first.",photoH:"Photo",phBio:"Who is this? Where do they come from and what do they want?",
   save:"Save",update:"Save changes",cancel:"Cancel",preview:"Preview",mine:"My characters",none:"You don't have any characters yet. Create one above.",
@@ -746,7 +810,7 @@ const X={
 "Prime Moment Papa":["u",["Prime Moment Papa Shake"],["Saitama","Zeno"]],
 "Lord Tepelius de Grote":["h",["Winter Mode"],["Prime Moment Papa","Saitama"]]
 };
-const APP_VERSION="2.3";
+const APP_VERSION="2.4";
 const BD={"Prime Moment Papa":"10-25","Lord Tepelius de Grote":"01-18",
 "Monkey D. Luffy":"05-05","Roronoa Zoro":"11-11","Portgas D. Ace":"01-01","Trafalgar Law":"10-06","Shanks":"03-09","Dracule Mihawk":"03-09","Whitebeard":"04-06","Kaido":"05-01","Big Mom":"02-15","Blackbeard":"08-03","Donquixote Doflamingo":"10-23","Charlotte Katakuri":"11-25","Akainu":"08-16","Aokiji":"09-21","Kizaru":"11-23","Monkey D. Garp":"05-02","Gol D. Roger":"12-31",
 "Naruto Uzumaki":"10-10","Sasuke Uchiha":"07-23","Kakashi Hatake":"09-15","Itachi Uchiha":"06-09","Minato Namikaze":"01-25","Jiraiya":"11-11","Might Guy":"01-01","Obito Uchiha":"02-10","Madara Uchiha":"12-24","Hashirama Senju":"10-23","Boruto Uzumaki":"03-27","Pain":"09-19",
@@ -1381,7 +1445,7 @@ function fight(){
   const r=sampleFight(A,B);lastW=r.w;lastDraw=r.draw;
   if(A.id!==B.id){if(r.draw)tally.d++;else if(r.w===A)tally.a++;else tally.b++}
   buildVerdict(A,B);
-  const reveal=()=>{fightKey=A.id+"|"+B.id;markWinner(A,B,true);$("#vResult").hidden=false;$("#pending").hidden=true;$("#fightBtn").textContent=tr().rematch;fighting=false};
+  const reveal=()=>{cardsAfterFight();fightKey=A.id+"|"+B.id;markWinner(A,B,true);$("#vResult").hidden=false;$("#pending").hidden=true;$("#fightBtn").textContent=tr().rematch;fighting=false};
   if(matchMedia("(prefers-reduced-motion: reduce)").matches){reveal();return}
   fighting=true;ar.classList.remove("hit","impact");void ar.offsetWidth;ar.classList.add("go");
   setTimeout(()=>{ar.classList.remove("go");ar.classList.add("hit","impact");$("#boom").textContent=t.booms[Math.floor(Math.random()*t.booms.length)];
@@ -1405,11 +1469,11 @@ function applyLang(){
   if(document.getElementById("modeBtn"))syncMode();
   $("#ver").textContent=`${t.version} ${APP_VERSION}`;
   $("#eyebrow").textContent=`Power ranking · ${C.length} characters · ${new Set(C.map(c=>c.a)).size} anime`;
-  renderChips();renderCards();renderVs();renderMake();renderCotd();
+  renderChips();renderCards();renderVs();renderMake();renderCotd();renderPlay();
 }
 function show(v){
   document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===v));
-  ["cards","tiers","vs","make"].forEach(x=>$("#v-"+x).hidden=x!==v);
+  ["cards","tiers","vs","play","make"].forEach(x=>$("#v-"+x).hidden=x!==v);if(v==="play")renderPlay();
 }
 
 const root=document.documentElement;
@@ -1562,5 +1626,112 @@ document.addEventListener("click",e=>{
     if(!dl.dataset.armed){dl.dataset.armed="1";dl.classList.add("warn");dl.textContent=tr().sure;setTimeout(()=>{if(dl.isConnected&&dl.dataset.armed){delete dl.dataset.armed;dl.classList.remove("warn");dl.textContent=tr().del}},3500);return}
     custom=custom.filter(x=>x.id!==dl.dataset.mkdel);if(editId===dl.dataset.mkdel)editId=null;saveCustom();afterChange();renderMake(tr().deleted,true);}
 });
+/* ---------- Spelen: kaarten verzamelen + fusie ---------- */
+const GK="ak-cards";let playView="cards",albumFilter="all";
+let G={own:{},day:"",extra:0,fights:0,seen:{}};
+try{const v=JSON.parse(localStorage.getItem(GK));if(v&&typeof v==="object")G=Object.assign(G,v)}catch(e){}
+const saveG=()=>{try{localStorage.setItem(GK,JSON.stringify(G))}catch(e){}};
+const dayKey=()=>{const d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()};
+const RAR={"S+":{w:4,nl:"Legendarisch",en:"Legendary",cls:"r-leg"},"S":{w:16,nl:"Episch",en:"Epic",cls:"r-epic"},"A":{w:35,nl:"Zeldzaam",en:"Rare",cls:"r-rare"},"B":{w:45,nl:"Gewoon",en:"Common",cls:"r-com"}};
+const rarName=t=>RAR[t][lang==="en"?"en":"nl"];
+const pool=()=>C.slice(0,BASE_N);
+const packsLeft=()=>(G.day!==dayKey()?1:0)+(G.extra||0);
+const dupes=()=>Object.values(G.own).reduce((a,n)=>a+Math.max(0,n-1),0);
+function drawCard(){const P=pool(),byT={};P.forEach(c=>(byT[c.t]=byT[c.t]||[]).push(c));
+  const tiers=Object.keys(RAR).filter(t=>byT[t]&&byT[t].length);const tot=tiers.reduce((a,t)=>a+RAR[t].w,0);
+  let r=Math.random()*tot,t=tiers[0];for(const x of tiers){if((r-=RAR[x].w)<0){t=x;break}}
+  const L=byT[t];return L[Math.floor(Math.random()*L.length)]}
+let lastPack=null;
+function openPack(){if(packsLeft()<1)return;
+  if(G.day!==dayKey())G.day=dayKey();else G.extra=Math.max(0,(G.extra||0)-1);
+  const cards=[drawCard(),drawCard(),drawCard()].map(c=>{const isNew=!G.own[c.n];G.own[c.n]=(G.own[c.n]||0)+1;return{c,isNew}});
+  saveG();lastPack=cards;renderPlay();}
+function untilMidnight(){const n=new Date(),m=new Date(n);m.setHours(24,0,0,0);const s=Math.max(0,Math.floor((m-n)/6e4));return{h:Math.floor(s/60),m:s%60}}
+const PT={
+ nl:{tabPlay:"Spelen",cards:"Kaarten",fusion:"Fusie",packTitle:"Kaartenpakje",open:"Open pakje",packsN:n=>n===1?"Je hebt 1 pakje klaarliggen.":`Je hebt ${n} pakjes klaarliggen.`,
+  next:(h,m)=>`Je volgende gratis pakje komt over ${h} uur en ${m} minuten.`,howGet:"Elke dag krijg je een gratis pakje. Na elke 10 gevechten bij Wie wint? krijg je een extra pakje.",
+  tapFlip:"Tik op een kaart om hem om te draaien",flipAll:"Alles omdraaien",newC:"NIEUW",album:"Album",of:(a,b)=>`${a} van ${b} verzameld`,
+  fAll:"Alles",fOwn:"Verzameld",fMiss:"Ontbreekt",trade:"5 dubbele inruilen voor 1 pakje",dupN:n=>`Je hebt ${n} dubbele ${n===1?"kaart":"kaarten"}.`,
+  fightsTo:n=>`Nog ${n} ${n===1?"gevecht":"gevechten"} tot een extra pakje.`,
+  fuTitle:"Fusie-maker",fuIntro:"Kies twee characters en laat ze samensmelten, zoals de Fusion Dance in Dragon Ball.",fuBtn:"Fuseer!",fuName:"Naam van de fusie",
+  fuSave:"Bewaar als eigen character",fuSaved:n=>`${n} staat nu bij je eigen characters en doet mee in de ranking en bij Wie wint?`,fuAgain:"Nog een fusie",
+  fuGroup:"Fusies",fuMove:(a,b)=>`Fusie-aanval: ${a} en ${b} tegelijk`,fuWeak:"De fusie houdt maar dertig minuten stand",
+  fuBio:(a,b)=>`Een fusie van ${a} en ${b}. Twee totaal verschillende vechters in één lichaam, en dat merk je: ze zijn het constant met zichzelf oneens.`,
+  fuSame:n=>`Een fusie van ${n} met zichzelf. Dubbel zo sterk, en dubbel zo eigenwijs.`},
+ en:{tabPlay:"Play",cards:"Cards",fusion:"Fusion",packTitle:"Card pack",open:"Open pack",packsN:n=>n===1?"You have 1 pack ready.":`You have ${n} packs ready.`,
+  next:(h,m)=>`Your next free pack arrives in ${h} h ${m} min.`,howGet:"You get a free pack every day. Every 10 fights in Who wins? earns you an extra pack.",
+  tapFlip:"Tap a card to flip it",flipAll:"Flip all",newC:"NEW",album:"Album",of:(a,b)=>`${a} of ${b} collected`,
+  fAll:"All",fOwn:"Collected",fMiss:"Missing",trade:"Trade 5 duplicates for 1 pack",dupN:n=>`You have ${n} duplicate ${n===1?"card":"cards"}.`,
+  fightsTo:n=>`${n} more ${n===1?"fight":"fights"} until an extra pack.`,
+  fuTitle:"Fusion maker",fuIntro:"Pick two characters and fuse them together, like the Fusion Dance in Dragon Ball.",fuBtn:"Fuse!",fuName:"Fusion name",
+  fuSave:"Save as your own character",fuSaved:n=>`${n} is now one of your own characters and joins the ranking and Who wins?`,fuAgain:"Another fusion",
+  fuGroup:"Fusions",fuMove:(a,b)=>`Fusion attack: ${a} and ${b} at once`,fuWeak:"The fusion only lasts thirty minutes",
+  fuBio:(a,b)=>`A fusion of ${a} and ${b}. Two completely different fighters in one body, and it shows: they constantly disagree with themselves.`,
+  fuSame:n=>`A fusion of ${n} with themselves. Twice as strong, and twice as stubborn.`}
+};
+const pt=()=>PT[lang];
+function cardFace(c,isNew){const R=RAR[c.t];return `<div class="tc ${R.cls}"><span class="tc-r">${rarName(c.t)}</span>${isNew?`<span class="tc-new">${pt().newC}</span>`:""}${badge(c)}<b>${esc(c.n)}</b><small>${esc(c.a)}</small><span class="tier t-${tcls(c.t)}">${c.t}</span></div>`}
+function renderCardsGame(){const t=pt(),P=pool(),own=P.filter(c=>G.own[c.n]).length,left=packsLeft(),u=untilMidnight(),d=dupes();
+  const toFight=10-((G.fights||0)%10);
+  let h=`<div class="panel pk"><div class="pk-head"><div><p class="mklab">${t.packTitle}</p><p class="pk-msg">${left?t.packsN(left):t.next(u.h,u.m)}</p></div><button class="btn primary fightbtn" type="button" id="openPack"${left?"":" disabled"}>${t.open}</button></div>
+  <p class="note" style="margin:0">${t.howGet} ${t.fightsTo(toFight)}</p>`;
+  if(lastPack){h+=`<p class="note" style="margin:0">${t.tapFlip}</p><div class="pack">${lastPack.map((x,i)=>`<button type="button" class="flip" data-flip="${i}" aria-label="Kaart ${i+1}"><span class="back"><span>力</span></span><span class="front">${cardFace(x.c,x.isNew)}</span></button>`).join("")}</div><button class="btn" type="button" id="flipAll" style="align-self:flex-start">${t.flipAll}</button>`}
+  h+=`</div><div class="panel"><div class="toprow"><p class="mklab">${t.album}</p><div class="seg2">${["all","own","miss"].map(f=>`<button type="button" data-af="${f}" aria-pressed="${albumFilter===f}">${t[{all:"fAll",own:"fOwn",miss:"fMiss"}[f]]}</button>`).join("")}</div></div>
+  <div class="prog"><span style="width:${own/P.length*100}%"></span></div><p class="note" style="margin:0">${t.of(own,P.length)}${d?" · "+t.dupN(d):""}</p>
+  ${d>=5?`<button class="btn" type="button" id="tradeDupes" style="align-self:flex-start">${t.trade}</button>`:""}
+  <div class="album">${RANKED.filter(c=>!c.cid).filter(c=>albumFilter==="all"||(albumFilter==="own")===!!G.own[c.n]).map(c=>G.own[c.n]?`<button type="button" class="ac ${RAR[c.t].cls}" data-go="${c.id}">${badge(c)}<b>${esc(c.n)}</b>${G.own[c.n]>1?`<span class="ac-n">×${G.own[c.n]}</span>`:""}</button>`:`<div class="ac miss ${RAR[c.t].cls}"><span class="mono q"><span>?</span></span><b>???</b><span class="tier t-${tcls(c.t)}">${c.t}</span></div>`).join("")}</div></div>`;
+  return h}
+/* fusion */
+const SHORT={"Satoru Gojo":"Gojo","Ryomen Sukuna":"Sukuna","Monkey D. Luffy":"Luffy","Monkey D. Garp":"Garp","Roronoa Zoro":"Zoro","Gol D. Roger":"Roger","Portgas D. Ace":"Ace","Trafalgar Law":"Law","Donquixote Doflamingo":"Doflamingo","Charlotte Katakuri":"Katakuri","Dracule Mihawk":"Mihawk","Sosuke Aizen":"Aizen","Isaac Netero":"Netero","Kisuke Urahara":"Urahara","Genryusai Yamamoto":"Yamamoto","Retsu Unohana":"Unohana","Izuku Midoriya (Deku)":"Deku","Katsuki Bakugo":"Bakugo","Shoto Todoroki":"Todoroki","Tomura Shigaraki":"Shigaraki","Kyojuro Rengoku":"Rengoku","Kusuo Saiki":"Saiki","Sung Jinwoo":"Jinwoo","Arataka Reigen":"Reigen","Taro Sakamoto":"Sakamoto","Younger Toguro":"Toguro","Prime Moment Papa":"Papa","Lord Tepelius de Grote":"Tepelius","Shigeo Kageyama (Mob)":"Mob","Big Mom":"Mom","Adult Gon":"Gon","Kid Buu":"Buu"};
+const shortOf=c=>SHORT[c.n]||c.n.replace(/\s*\(.*\)/,"").split(" ")[0];
+function fuseName(a,b){const x=shortOf(a),y=shortOf(b);if(a===b)return (lang==="en"?"Double ":"Dubbele ")+x;
+  const m=x.match(/^[^aeiouy]*[aeiouy]+[^aeiouy]?/i),p1=m&&m[0].length<x.length?m[0]:x.slice(0,Math.ceil(x.length/2));
+  const v=y.search(/[aeiouy]/i),p2=v>0?y.slice(v):y.slice(Math.floor(y.length/2));return p1+p2.toLowerCase()}
+let fuse=null;
+function makeFusion(A,B){const t=pt(),stat=i=>Math.min(100,Math.round(Math.max(A.s[i],B.s[i])*.75+Math.min(A.s[i],B.s[i])*.25+4));
+  const pa=P(A),pb=P(B),ma=M(A),mb=M(B),nm=s=>{const k=s.indexOf(":");return k>0&&k<45?s.slice(0,k):s.split(" ").slice(0,3).join(" ")};
+  const ra=(A.x||X[A.n]||["u"])[0],rb=(B.x||X[B.n]||["u"])[0],role=ra===rb?ra:(ra==="v"||rb==="v")?"a":ra==="u"||rb==="u"?"u":"a";
+  const ppu=A.a==="Prime Papa Universe"||B.a==="Prime Papa Universe";
+  return{n:fuseName(A,B),a:ppu?"Prime Papa Universe":t.fuGroup,k:Math.min(101,Math.max(A.k,B.k)+2),s:[0,1,2,3,4].map(stat),role,
+    p:[pa[0],pb[0],t.fuMove(nm(pa[0]),nm(pb[0]))].map(s=>s.slice(0,140)),m:[ma[0],mb[0],t.fuWeak].map(s=>s.slice(0,140)),
+    forms:["Fusion"],fights:[],bio:(A===B?t.fuSame(A.n):t.fuBio(A.n,B.n)).slice(0,600),bd:"",img:"",src:[A.n,B.n]}}
+function renderFusion(){const t=pt(),o=[...C].sort((a,b)=>a.n.localeCompare(b.n)).map(c=>`<option value="${c.id}">${esc(c.n)}</option>`).join("");
+  let h=`<div class="panel fu"><h2 class="fu-h">${t.fuTitle}</h2><p class="note" style="margin:0">${t.fuIntro}</p>
+  <div class="vs-pick"><select id="fuA" aria-label="Character 1">${o}</select><span class="vsx" aria-hidden="true">+</span><select id="fuB" aria-label="Character 2">${o}</select></div>
+  <div class="fuse-stage" id="fuStage"></div>
+  <button class="btn primary fightbtn" type="button" id="fuGo" style="align-self:flex-start">${t.fuBtn}</button></div><div id="fuOut"></div>`;
+  return h}
+function fuseStage(){const A=C.find(c=>c.id===$("#fuA").value),B=C.find(c=>c.id===$("#fuB").value);if(!A||!B)return;
+  $("#fuStage").innerHTML=`<div class="fs l">${badge(A)}<b>${esc(A.n)}</b></div><span class="fs-x">+</span><div class="fs r">${badge(B)}<b>${esc(B.n)}</b></div>`}
+function showFusion(){const t=pt(),f=fuse;const c={id:"preview",n:f.n,a:f.a,k:f.k,s:f.s,t:tierOf(f.k),pow:powOf(f.s),
+  r:1+C.filter(x=>x.k>f.k||(x.k===f.k&&x.pow>powOf(f.s))).length,p:f.p,m:f.m,bio:f.bio,x:[f.role,f.forms,f.fights]};
+  $("#fuOut").innerHTML=`<div class="panel fu-res"><label class="fl"><span>${t.fuName}</span><input type="text" id="fuName" maxlength="40" value="${esc(f.n)}"></label>${card(c)}
+  <div class="mkbtns"><button class="btn primary" type="button" id="fuSave">${t.fuSave}</button><button class="btn" type="button" id="fuAgain">${t.fuAgain}</button></div><p class="mkok" id="fuMsg" hidden></p></div>`}
+function doFuse(){const A=C.find(c=>c.id===$("#fuA").value),B=C.find(c=>c.id===$("#fuB").value);if(!A||!B)return;
+  fuse=makeFusion(A,B);const st=$("#fuStage");
+  const done=()=>{st.classList.remove("go");st.classList.add("done");st.innerHTML=`<div class="fs-flash">${badge({n:fuse.n,a:fuse.a,img:""})}<b>${esc(fuse.n)}</b></div>`;showFusion();$("#fuOut").scrollIntoView({behavior:"smooth",block:"start"})};
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches){done();return}
+  st.classList.remove("done");void st.offsetWidth;st.classList.add("go");setTimeout(done,900)}
+function renderPlay(){const el=$("#v-play");if(!el)return;const t=pt();
+  const keepA=$("#fuA")&&$("#fuA").value,keepB=$("#fuB")&&$("#fuB").value;
+  el.innerHTML=`<div class="seg2 big" role="group">${["cards","fusion"].map(v=>`<button type="button" data-pv="${v}" aria-pressed="${playView===v}">${t[v]}</button>`).join("")}</div>`+(playView==="cards"?renderCardsGame():renderFusion());
+  if(playView==="fusion"){const a=$("#fuA"),b=$("#fuB");a.value=keepA||(C.find(c=>c.n==="Prime Moment Papa")||C[0]).id;b.value=keepB||(C.find(c=>c.n==="Goku")||C[1]).id;fuseStage();if(fuse)showFusion()}}
+function cardsAfterFight(){G.fights=(G.fights||0)+1;if(G.fights%10===0)G.extra=(G.extra||0)+1;saveG()}
+document.addEventListener("click",e=>{
+  const pv=e.target.closest("[data-pv]");if(pv){playView=pv.dataset.pv;renderPlay();return}
+  if(e.target.id==="openPack"){openPack();return}
+  const fl=e.target.closest("[data-flip]");if(fl){fl.classList.add("on");return}
+  if(e.target.id==="flipAll"){document.querySelectorAll(".flip").forEach(f=>f.classList.add("on"));return}
+  const af=e.target.closest("[data-af]");if(af){albumFilter=af.dataset.af;lastPack=null;renderPlay();return}
+  if(e.target.id==="tradeDupes"){let need=5;for(const k of Object.keys(G.own)){while(need>0&&G.own[k]>1){G.own[k]--;need--}if(!need)break}if(!need){G.extra=(G.extra||0)+1;saveG();lastPack=null;renderPlay()}return}
+  if(e.target.id==="fuGo"){doFuse();return}
+  if(e.target.id==="fuAgain"){fuse=null;$("#fuOut").innerHTML="";const st=$("#fuStage");st.classList.remove("done");fuseStage();window.scrollTo({top:$("#v-play").offsetTop,behavior:"smooth"});return}
+  if(e.target.id==="fuSave"&&fuse){const nm=($("#fuName").value.trim()||fuse.n).slice(0,40);const {src,...rest}=fuse;const u=Object.assign({id:"u"+Date.now()},rest,{n:nm});
+    custom.push(u);saveCustom();afterChange();renderPlay();const m=$("#fuMsg");if(m){m.textContent=pt().fuSaved(nm);m.hidden=false;$("#fuSave").disabled=true}return}
+});
+document.addEventListener("change",e=>{if(e.target.id==="fuA"||e.target.id==="fuB"){fuse=null;$("#fuOut").innerHTML="";$("#fuStage").classList.remove("done");fuseStage()}});
+document.addEventListener("input",e=>{if(e.target.id==="fuName"&&fuse){fuse.n=e.target.value.trim().slice(0,40)||fuse.n}});
+setInterval(()=>{if(!$("#v-play").hidden&&playView==="cards"&&!lastPack&&$(".pk-msg"))$(".pk-msg").textContent=packsLeft()?pt().packsN(packsLeft()):pt().next(untilMidnight().h,untilMidnight().m)},60000);
+
 renderTiers();fillVs();applyLang();syncMode();
 </script>
