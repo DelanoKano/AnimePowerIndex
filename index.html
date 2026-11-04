@@ -49,7 +49,7 @@ h1 em{font-style:normal;background:var(--ink);color:var(--paper);padding:.04em .
 .hero p.lead{margin:0;max-width:56ch;color:var(--muted)}
 
 .tabs{display:flex;gap:0;border:3px solid var(--ink);width:max-content;max-width:100%;overflow-x:auto}
-.tabs button{all:unset;cursor:pointer;padding:9px 16px;font-family:var(--display);font-size:.95rem;white-space:nowrap;border-left:3px solid var(--ink)}
+.tabs button{all:unset;cursor:pointer;padding:10px 16px;font-family:var(--body);font-weight:700;font-size:.92rem;white-space:nowrap;border-left:3px solid var(--ink)}
 .tabs button:first-child{border-left:0}
 .tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper)}
 .tabs button:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--s);outline-offset:2px}
@@ -110,7 +110,7 @@ ul.fights li{font-size:.88rem;display:flex;gap:8px;align-items:baseline}
 ul.fights li b{font-family:var(--display);font-weight:400;font-size:.78rem;background:var(--ink);color:var(--paper);padding:0 5px;flex:none}
 .mk{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px;align-items:start}
 @media (max-width:760px){.mk{grid-template-columns:1fr}}
-.mkf{border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:16px;display:flex;flex-direction:column;gap:12px;background:var(--paper)}
+.mkf{border:3px solid var(--ink);padding:16px;display:flex;flex-direction:column;gap:12px;background:var(--paper)}
 .mkf h2{margin:0;font-family:var(--display);font-weight:400;font-size:1.4rem;line-height:1.1}
 .fl{display:flex;flex-direction:column;gap:4px}
 .fl>span{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
@@ -164,7 +164,7 @@ ul.fights li b{font-family:var(--display);font-weight:400;font-size:.78rem;backg
 @keyframes stamp{0%{transform:translateX(-50%) rotate(-10deg) scale(2.4);opacity:0}100%{transform:translateX(-50%) rotate(-10deg) scale(1);opacity:1}}
 .result{display:flex;flex-direction:column;gap:14px;animation:rup .4s ease-out}
 @keyframes rup{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:none}}
-.fightbtn{font-family:var(--display);font-weight:400;font-size:1.1rem;padding:9px 22px}
+.fightbtn{font-family:var(--body);font-weight:700;font-size:1rem;padding:10px 20px}
 @media (max-width:700px){.arena{min-height:150px}.fighter .mono{width:64px;height:64px}.fighter .mono span{width:42px;height:42px;font-size:1.05rem}.fighter b{font-size:.86rem}.boom{font-size:1.5rem}}
 .kicker{margin:-2px 0 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .rounds{display:flex;flex-direction:column;gap:14px;border-left:3px solid var(--ink);padding-left:14px}
@@ -181,7 +181,7 @@ ul.fights li b{font-family:var(--display);font-weight:400;font-size:.78rem;backg
 .obar i+i{background:var(--s)}
 .tally{margin:0;font-family:var(--mono);font-size:.8rem;border:2px solid var(--ink);padding:6px 10px;align-self:flex-start}
 .bio{margin:0;line-height:1.6;font-size:.92rem;max-width:62ch}
-.cotd{border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:14px;margin-bottom:16px;display:flex;flex-direction:column;gap:10px;background:linear-gradient(90deg,var(--s-plus) 0 8px,var(--paper) 8px)}
+.cotd{border:3px solid var(--ink);padding:14px;margin-bottom:16px;display:flex;flex-direction:column;gap:10px;background:linear-gradient(90deg,var(--s-plus) 0 8px,var(--paper) 8px)}
 .cotd>*{margin-left:8px}
 .cotd .rl{background:var(--ink);color:var(--paper)}
 .cotd-in{display:flex;align-items:center;gap:12px}
@@ -201,7 +201,7 @@ details.spoil[open] summary{margin-bottom:6px}
 .phrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .phrow .mono{width:56px;height:56px}
 label.btn{display:inline-block}
-.panel{border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);background:var(--paper);padding:14px;display:flex;flex-direction:column;gap:10px;margin-bottom:16px;min-width:0}
+.panel{border:3px solid var(--ink);background:var(--paper);padding:14px;display:flex;flex-direction:column;gap:10px;margin-bottom:16px;min-width:0}
 .prog{height:12px;border:2px solid var(--ink);background:var(--paper)}
 .prog span{display:block;height:100%;background:var(--ink)}
 .btn[disabled]{opacity:.45;cursor:not-allowed}
@@ -212,7 +212,7 @@ label.btn{display:inline-block}
 .seg2 button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 .seg2 button:focus-visible{outline:3px solid var(--s);outline-offset:2px}
 .seg2.big{margin-bottom:14px;border-width:3px}
-.seg2.big button{padding:8px 20px;font-family:var(--display);font-weight:400;font-size:1rem}
+.seg2.big button{padding:8px 20px;font-family:var(--body);font-weight:700;font-size:.95rem}
 .pk-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 .pk-msg{margin:2px 0 0;font-weight:700}
 .pack{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
@@ -292,7 +292,7 @@ label.btn{display:inline-block}
 .dupchip{border:2px solid var(--ink);padding:2px 8px;font-size:.78rem;font-weight:700;background:var(--paper)}
 .dupchip.r-leg{box-shadow:inset 0 -3px 0 var(--s-plus)}.dupchip.r-epic{box-shadow:inset 0 -3px 0 var(--s)}.dupchip.r-rare{box-shadow:inset 0 -3px 0 var(--a)}
 .note.small{font-size:.74rem}
-.welcome{border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);background:var(--paper);padding:14px;margin-bottom:16px;display:flex;flex-direction:column;gap:10px}
+.welcome{border:3px solid var(--ink);background:var(--paper);padding:14px;margin-bottom:16px;display:flex;flex-direction:column;gap:10px}
 .w-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .w-head b{font-family:var(--display);font-weight:400;font-size:1.25rem;line-height:1.15}
 .w-x{all:unset;cursor:pointer;width:32px;height:32px;display:grid;place-items:center;border:2px solid var(--ink);font-weight:700;flex:none}
@@ -305,6 +305,21 @@ label.btn{display:inline-block}
 .w-it b{font-size:.95rem}
 .w-it span{font-size:.84rem;color:var(--muted);line-height:1.4}
 .helpbtn{all:unset;cursor:pointer;text-decoration:underline;text-underline-offset:3px;color:var(--ink)}
+.countrow{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:10px 0;flex-wrap:wrap}
+.countrow .count{margin:0}
+.grid.compact{grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
+.grid.compact .wide{grid-column:1/-1;display:flex;flex-direction:column;gap:8px}
+.grid.compact .wide .btn.collapse{align-self:flex-start}
+.mini{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:10px;border:2px solid var(--ink);padding:8px 10px;background:var(--paper);min-width:0;scroll-margin-top:16px}
+.mini:hover{background:var(--tone)}
+.mini:focus-visible{outline:3px solid var(--s);outline-offset:2px}
+.mini .mono{width:40px;height:40px;flex:none}
+.mini .mono span{width:26px;height:26px;font-size:.72rem}
+.mi-txt{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.2}
+.mi-txt b{font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mi-txt small{font-size:.74rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mi-txt .rank{font-size:.68rem}
+.mini.r-leg{box-shadow:inset 4px 0 0 var(--s-plus)}.mini.r-epic{box-shadow:inset 4px 0 0 var(--s)}.mini.r-rare{box-shadow:inset 4px 0 0 var(--a)}.mini.r-com{box-shadow:inset 4px 0 0 var(--b)}
 .empty{border:3px dashed var(--ink);padding:24px;text-align:center;margin:0}
 
 .tierlist{display:flex;flex-direction:column;border:3px solid var(--ink)}
@@ -380,6 +395,8 @@ label.btn{display:inline-block}
 .hero .eyebrow{padding-right:clamp(112px,20vw,130px)}
 @media (max-width:700px){
   .wrap>.tabs{display:flex;width:100%;overflow:visible}
+  .panel,.welcome,.cotd,.tierlist,.trow,.tlab,.arena,.fuse-stage,.wallet,.mkf,.pk-tile,.pk-art,.tc,.flip .back,.mine,.imp,.seg2.big,.verdict,.tabs button,.w-x,.flip .back span,.pk-art span{border-width:2px}
+  .cotd,.panel,.welcome,.wallet{margin-bottom:12px}
   .wrap>.tabs button{flex:1 1 auto;display:flex;align-items:center;justify-content:center;text-align:center;padding:9px 4px;font-family:var(--body);font-weight:700;font-size:clamp(.62rem,3.05vw,.86rem);letter-spacing:0;white-space:normal;line-height:1.15;min-width:0;overflow-wrap:normal;word-break:keep-all}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
@@ -422,7 +439,7 @@ label.btn{display:inline-block}
       </select>
     </div>
     <div class="chips" id="chips" style="margin-top:10px"></div>
-    <p class="count" id="count" style="margin:10px 0"></p>
+    <div class="countrow"><p class="count" id="count"></p><div class="seg2" id="viewSeg" role="group"><button type="button" data-view="big" aria-pressed="true" data-i18n="vBig">Groot</button><button type="button" data-view="small" aria-pressed="false" data-i18n="vSmall">Compact</button></div></div>
     <div class="grid" id="grid"></div>
   </section>
 
@@ -528,7 +545,7 @@ const L={
   winP:(w,k,m,l)=>`${w} wint op ${k} van de 5 eigenschappen. Maar let op het minpunt van ${w}: ${m}. Daar kan ${l} zijn kans pakken.`,
   scoreLine:(a,b)=>`Krachtscore ${a} tegen ${b}.`,
   fight:"Vechten!",rematch:"Rematch!",oddsL:"Winkans",tallyL:(n,a,x,b,y)=>`Stand na ${n} ${n===1?"gevecht":"gevechten"}: ${a} ${x} – ${y} ${b}`,draws:n=>n?` (${n}× gelijk)`:"",upsetH:n=>`Stunt! ${n} wint tegen de verwachting in`,kickU:["De grootste stunt van het jaar","Niemand zag dit aankomen","Tegen alle verwachtingen in"],pending:"Tik op Vechten! om te zien wie wint.",winnerW:"WINNAAR",drawW:"GELIJK",booms:["BAM!","POW!","DOEF!","KRAK!","WHAM!"],
-  tabPlay:"Spelen",tabMake:"Maak je eigen",help:"Hoe werkt het?",wTitle:"Welkom bij de Krachtindex!",wClose:"Begrepen",
+  tabPlay:"Spelen",tabMake:"Maak je eigen",vBig:"Groot",vSmall:"Compact",collapse:"Klein maken",help:"Hoe werkt het?",wTitle:"Welkom bij de Krachtindex!",wClose:"Begrepen",
   wItems:[["cards","Characters","Hier ben je nu. Tik op een naam voor het verhaal, de krachten en spoilers."],["vs","Wie wint?","Laat twee characters vechten en lees het gevechtsverhaal."],["play","Spelen","Verzamel kaarten met munten en maak fusies."],["make","Maak je eigen","Zet jezelf of je vrienden in de app, met foto."]],mkTitle:"Maak je eigen character",mkIntro:"Je eigen characters worden op dit apparaat bewaard en doen overal mee: in de ranking, de tierlijst en bij Wie wint?",
   fName:"Naam",fAnime:"Uit welke anime of groep?",defAnime:"Mijn characters",fK:"Totale kracht (bepaalt de ranking)",fStats:"Scores",fRole:"Rol",
   fP:"Krachten (één per regel)",fM:"Minpunten (één per regel)",fForms:"Vormen en transformaties (scheid met komma's)",fFights:"Bekende gevechten (scheid met komma's)",fBio:"Verhaal (optioneel)",fPhoto:"Foto (optioneel)",pickPhoto:"Foto kiezen",changePhoto:"Andere foto",rmPhoto:"Foto weghalen",photoHelp:"De foto wordt klein gemaakt en op dit apparaat bewaard. Deel je het character, dan gaat de foto mee.",photoLocal:"Deze foto staat alleen op dit apparaat.",photoErr:"Deze foto kon niet worden geladen. Probeer een andere.",photoFull:"Je telefoon heeft geen ruimte meer voor deze foto. Haal eerst een andere foto weg.",photoH:"Foto",phBio:"Wie is dit? Waar komt hij vandaan en wat wil hij bereiken?",
@@ -551,7 +568,7 @@ const L={
   winP:(w,k,m,l)=>`${w} wins on ${k} of the 5 stats. But watch out for ${w}'s weakness: ${m}. That's where ${l} could take their chance.`,
   scoreLine:(a,b)=>`Power score ${a} vs ${b}.`,
   fight:"Fight!",rematch:"Rematch!",oddsL:"Win chance",tallyL:(n,a,x,b,y)=>`Score after ${n} ${n===1?"fight":"fights"}: ${a} ${x} – ${y} ${b}`,draws:n=>n?` (${n} draws)`:"",upsetH:n=>`Upset! ${n} wins against the odds`,kickU:["The upset of the year","Nobody saw this coming","Against all odds"],pending:"Tap Fight! to see who wins.",winnerW:"WINNER",drawW:"DRAW",booms:["BAM!","POW!","BOOM!","CRACK!","WHAM!"],
-  tabPlay:"Play",tabMake:"Create",help:"How does it work?",wTitle:"Welcome to the Power Index!",wClose:"Got it",
+  tabPlay:"Play",tabMake:"Create",vBig:"Large",vSmall:"Compact",collapse:"Collapse",help:"How does it work?",wTitle:"Welcome to the Power Index!",wClose:"Got it",
   wItems:[["cards","Characters","You're here now. Tap a name for the story, powers and spoilers."],["vs","Who wins?","Make two characters fight and read the battle story."],["play","Play","Collect cards with coins and create fusions."],["make","Create","Add yourself or your friends to the app, with a photo."]],mkTitle:"Create your own character",mkIntro:"Your own characters are saved on this device and join everything: the ranking, the tier list and Who wins?",
   fName:"Name",fAnime:"From which anime or group?",defAnime:"My characters",fK:"Overall power (sets the ranking)",fStats:"Stats",fRole:"Role",
   fP:"Powers (one per line)",fM:"Weaknesses (one per line)",fForms:"Forms and transformations (separate with commas)",fFights:"Famous fights (separate with commas)",fBio:"Story (optional)",fPhoto:"Photo (optional)",pickPhoto:"Choose photo",changePhoto:"Change photo",rmPhoto:"Remove photo",photoHelp:"The photo is shrunk and saved on this device. If you share the character, the photo goes along.",photoLocal:"This photo is only saved on this device.",photoErr:"This photo couldn't be loaded. Try another one.",photoFull:"Your phone has no room left for this photo. Remove another photo first.",photoH:"Photo",phBio:"Who is this? Where do they come from and what do they want?",
@@ -856,7 +873,7 @@ const X={
 "Prime Moment Papa":["u",["Prime Moment Papa Shake"],["Saitama","Zeno"]],
 "Lord Tepelius de Grote":["h",["Winter Mode"],["Prime Moment Papa","Saitama"]]
 };
-const APP_VERSION="2.6";
+const APP_VERSION="2.7";
 const BD={"Prime Moment Papa":"10-25","Lord Tepelius de Grote":"01-18",
 "Monkey D. Luffy":"05-05","Roronoa Zoro":"11-11","Portgas D. Ace":"01-01","Trafalgar Law":"10-06","Shanks":"03-09","Dracule Mihawk":"03-09","Whitebeard":"04-06","Kaido":"05-01","Big Mom":"02-15","Blackbeard":"08-03","Donquixote Doflamingo":"10-23","Charlotte Katakuri":"11-25","Akainu":"08-16","Aokiji":"09-21","Kizaru":"11-23","Monkey D. Garp":"05-02","Gol D. Roger":"12-31",
 "Naruto Uzumaki":"10-10","Sasuke Uchiha":"07-23","Kakashi Hatake":"09-15","Itachi Uchiha":"06-09","Minato Namikaze":"01-25","Jiraiya":"11-11","Might Guy":"01-01","Obito Uchiha":"02-10","Madara Uchiha":"12-24","Hashirama Senju":"10-23","Boruto Uzumaki":"03-27","Pain":"09-19",
@@ -1265,8 +1282,18 @@ function renderCards(){
   let list=RANKED.filter(c=>(!filter||c.a===filter)&&(!q||[c.n,c.a,...c.p,...c.m,...EN[c.i].p,...EN[c.i].m,...(X[c.n]?[...X[c.n][1],...X[c.n][2]]:[]),...(BIO[c.n]||[]),c.bio||""].join(" ").toLowerCase().includes(q)));
   if(srt!=="rank"){const i=["kracht","snelheid","verdediging","techniek","slimheid"].indexOf(srt);list=[...list].sort((a,b)=>b.s[i]-a.s[i]||a.r-b.r)}
   $("#count").textContent=tr().count(list.length,C.length);
-  $("#grid").innerHTML=list.length?list.map(card).join(""):`<p class="empty">${tr().empty}</p>`;
+  $("#grid").classList.toggle("compact",viewMode==="small");
+  document.querySelectorAll("[data-view]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.view===viewMode));
+  $("#grid").innerHTML=list.length?list.map(c=>viewMode==="small"&&!expanded.has(c.id)?mini(c):(viewMode==="small"?`<div class="wide">${card(c)}<button type="button" class="btn collapse" data-collapse="${c.id}">${tr().collapse}</button></div>`:card(c))).join(""):`<p class="empty">${tr().empty}</p>`;
 }
+let viewMode="big";try{if(localStorage.getItem("ak-view")==="small")viewMode="small"}catch(e){}
+const expanded=new Set();
+function mini(c){return `<button type="button" class="mini ${RAR[c.t]?RAR[c.t].cls:""}" id="${c.id}" data-expand="${c.id}">${badge(c)}<span class="mi-txt"><span class="rank">#${c.r}</span><b>${esc(c.n)}</b><small>${esc(c.a)}</small></span><span class="tier t-${tcls(c.t)}">${c.t}</span></button>`}
+document.addEventListener("click",e=>{
+  const vb=e.target.closest("[data-view]");if(vb){viewMode=vb.dataset.view;expanded.clear();try{localStorage.setItem("ak-view",viewMode)}catch(_){}renderCards();return}
+  const ex=e.target.closest("[data-expand]");if(ex){expanded.add(ex.dataset.expand);renderCards();const el=document.getElementById(ex.dataset.expand);if(el){const d=el.querySelector("details.more");if(d)d.open=true;el.scrollIntoView({behavior:"smooth",block:"start"})}return}
+  const co=e.target.closest("[data-collapse]");if(co){expanded.delete(co.dataset.collapse);renderCards();const el=document.getElementById(co.dataset.collapse);if(el)el.scrollIntoView({behavior:"smooth",block:"center"});return}
+});
 function renderChips(){
   const as=[...new Set(C.map(c=>c.a))].sort((a,b)=>a.localeCompare(b));
   $("#chips").innerHTML=`<select id="animeSel" aria-label="Anime"><option value="">${tr().all} (${as.length})</option>${as.map(a=>`<option value="${esc(a)}"${filter===a?" selected":""}>${esc(a)} (${C.filter(c=>c.a===a).length})</option>`).join("")}</select>`;
@@ -1546,7 +1573,7 @@ document.addEventListener("click",e=>{
   const lb=e.target.closest("[data-lang]");if(lb){lang=lb.dataset.lang;try{localStorage.setItem("ak-lang",lang)}catch(_){}applyLang();return}
   const tab=e.target.closest(".tabs button");if(tab){show(tab.dataset.v);return}
   const chip=e.target.closest(".chip");if(chip){filter=chip.dataset.a||null;renderChips();renderCards();return}
-  const go=e.target.closest("[data-go]");if(go){filter=null;$("#q").value="";$("#sort").value="rank";renderChips();renderCards();show("cards");
+  const go=e.target.closest("[data-go]");if(go){if(viewMode==="small")expanded.add(go.dataset.go);filter=null;$("#q").value="";$("#sort").value="rank";renderChips();renderCards();show("cards");
     const el=document.getElementById(go.dataset.go);el.scrollIntoView({behavior:"smooth",block:"start"});el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");return}
   if(e.target.id==="rnd"){if(fighting)return;const a=Math.floor(Math.random()*C.length);let b;do{b=Math.floor(Math.random()*C.length)}while(b===a);$("#vA").value=C[a].id;$("#vB").value=C[b].id;fightKey=null;renderVs();fight();return}
   if(e.target.id==="fightBtn"){fight();return}
