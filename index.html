@@ -195,6 +195,12 @@ details.spoil summary{cursor:pointer;font-family:var(--mono);font-size:.72rem;le
 details.spoil summary::-webkit-details-marker{display:none}
 details.spoil[open] summary{margin-bottom:6px}
 .card .ch{cursor:pointer}
+.mono.photo{background:var(--paper);overflow:hidden;padding:0}
+.mono.photo img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.phrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.phrow .mono{width:56px;height:56px}
+label.btn{display:inline-block}
 .empty{border:3px dashed var(--ink);padding:24px;text-align:center;margin:0}
 
 .tierlist{display:flex;flex-direction:column;border:3px solid var(--ink)}
@@ -416,7 +422,7 @@ const L={
   fight:"Vechten!",rematch:"Rematch!",oddsL:"Winkans",tallyL:(n,a,x,b,y)=>`Stand na ${n} ${n===1?"gevecht":"gevechten"}: ${a} ${x} – ${y} ${b}`,draws:n=>n?` (${n}× gelijk)`:"",upsetH:n=>`Stunt! ${n} wint tegen de verwachting in`,kickU:["De grootste stunt van het jaar","Niemand zag dit aankomen","Tegen alle verwachtingen in"],pending:"Tik op Vechten! om te zien wie wint.",winnerW:"WINNAAR",drawW:"GELIJK",booms:["BAM!","POW!","DOEF!","KRAK!","WHAM!"],
   tabMake:"Maak je eigen",mkTitle:"Maak je eigen character",mkIntro:"Je eigen characters worden op dit apparaat bewaard en doen overal mee: in de ranking, de tierlijst en bij Wie wint?",
   fName:"Naam",fAnime:"Uit welke anime of groep?",defAnime:"Mijn characters",fK:"Totale kracht (bepaalt de ranking)",fStats:"Scores",fRole:"Rol",
-  fP:"Krachten (één per regel)",fM:"Minpunten (één per regel)",fForms:"Vormen en transformaties (scheid met komma's)",fFights:"Bekende gevechten (scheid met komma's)",fBio:"Verhaal (optioneel)",phBio:"Wie is dit? Waar komt hij vandaan en wat wil hij bereiken?",
+  fP:"Krachten (één per regel)",fM:"Minpunten (één per regel)",fForms:"Vormen en transformaties (scheid met komma's)",fFights:"Bekende gevechten (scheid met komma's)",fBio:"Verhaal (optioneel)",fPhoto:"Foto (optioneel)",pickPhoto:"Foto kiezen",changePhoto:"Andere foto",rmPhoto:"Foto weghalen",photoHelp:"De foto wordt klein gemaakt en op dit apparaat bewaard. Deel je het character, dan gaat de foto mee.",photoLocal:"Deze foto staat alleen op dit apparaat.",photoErr:"Deze foto kon niet worden geladen. Probeer een andere.",photoFull:"Je telefoon heeft geen ruimte meer voor deze foto. Haal eerst een andere foto weg.",photoH:"Foto",phBio:"Wie is dit? Waar komt hij vandaan en wat wil hij bereiken?",
   save:"Opslaan",update:"Wijzigingen opslaan",cancel:"Annuleren",preview:"Voorbeeld",mine:"Mijn characters",none:"Je hebt nog geen eigen characters. Maak er hierboven een.",
   edit:"Bewerken",del:"Verwijderen",sure:"Zeker weten?",errName:"Geef je character een naam.",errP:"Voeg minstens één kracht en één minpunt toe.",
   saved:r=>`Opgeslagen! Je character staat op plek #${r}.`,share:"Delen",copy:"Kopieer code",copied:"Gekopieerd! Stuur de code naar een vriend.",copyFail:"Selecteer de code en kopieer hem zelf.",shareVia:"Deel via app",
@@ -438,7 +444,7 @@ const L={
   fight:"Fight!",rematch:"Rematch!",oddsL:"Win chance",tallyL:(n,a,x,b,y)=>`Score after ${n} ${n===1?"fight":"fights"}: ${a} ${x} – ${y} ${b}`,draws:n=>n?` (${n} draws)`:"",upsetH:n=>`Upset! ${n} wins against the odds`,kickU:["The upset of the year","Nobody saw this coming","Against all odds"],pending:"Tap Fight! to see who wins.",winnerW:"WINNER",drawW:"DRAW",booms:["BAM!","POW!","BOOM!","CRACK!","WHAM!"],
   tabMake:"Create",mkTitle:"Create your own character",mkIntro:"Your own characters are saved on this device and join everything: the ranking, the tier list and Who wins?",
   fName:"Name",fAnime:"From which anime or group?",defAnime:"My characters",fK:"Overall power (sets the ranking)",fStats:"Stats",fRole:"Role",
-  fP:"Powers (one per line)",fM:"Weaknesses (one per line)",fForms:"Forms and transformations (separate with commas)",fFights:"Famous fights (separate with commas)",fBio:"Story (optional)",phBio:"Who is this? Where do they come from and what do they want?",
+  fP:"Powers (one per line)",fM:"Weaknesses (one per line)",fForms:"Forms and transformations (separate with commas)",fFights:"Famous fights (separate with commas)",fBio:"Story (optional)",fPhoto:"Photo (optional)",pickPhoto:"Choose photo",changePhoto:"Change photo",rmPhoto:"Remove photo",photoHelp:"The photo is shrunk and saved on this device. If you share the character, the photo goes along.",photoLocal:"This photo is only saved on this device.",photoErr:"This photo couldn't be loaded. Try another one.",photoFull:"Your phone has no room left for this photo. Remove another photo first.",photoH:"Photo",phBio:"Who is this? Where do they come from and what do they want?",
   save:"Save",update:"Save changes",cancel:"Cancel",preview:"Preview",mine:"My characters",none:"You don't have any characters yet. Create one above.",
   edit:"Edit",del:"Delete",sure:"Are you sure?",errName:"Give your character a name.",errP:"Add at least one power and one weakness.",
   saved:r=>`Saved! Your character is ranked #${r}.`,share:"Share",copy:"Copy code",copied:"Copied! Send the code to a friend.",copyFail:"Select the code and copy it yourself.",shareVia:"Share via app",
@@ -740,7 +746,7 @@ const X={
 "Prime Moment Papa":["u",["Prime Moment Papa Shake"],["Saitama","Zeno"]],
 "Lord Tepelius de Grote":["h",["Winter Mode"],["Prime Moment Papa","Saitama"]]
 };
-const APP_VERSION="2.2.3";
+const APP_VERSION="2.3";
 const BD={"Prime Moment Papa":"10-25","Lord Tepelius de Grote":"01-18",
 "Monkey D. Luffy":"05-05","Roronoa Zoro":"11-11","Portgas D. Ace":"01-01","Trafalgar Law":"10-06","Shanks":"03-09","Dracule Mihawk":"03-09","Whitebeard":"04-06","Kaido":"05-01","Big Mom":"02-15","Blackbeard":"08-03","Donquixote Doflamingo":"10-23","Charlotte Katakuri":"11-25","Akainu":"08-16","Aokiji":"09-21","Kizaru":"11-23","Monkey D. Garp":"05-02","Gol D. Roger":"12-31",
 "Naruto Uzumaki":"10-10","Sasuke Uchiha":"07-23","Kakashi Hatake":"09-15","Itachi Uchiha":"06-09","Minato Namikaze":"01-25","Jiraiya":"11-11","Might Guy":"01-01","Obito Uchiha":"02-10","Madara Uchiha":"12-24","Hashirama Senju":"10-23","Boruto Uzumaki":"03-27","Pain":"09-19",
@@ -1095,6 +1101,7 @@ function moreInfo(c){const x=c.x||X[c.n];if(!x)return"";const t=tr();
   ${bio?`<div><h4>${t.story}</h4><p class="bio">${esc(bio)}</p></div>`:""}
   ${(()=>{const L=LORE[c.n];if(!L)return"";const i=lang==="en"?1:0,nm=esc(c.n.split(" (")[0]);
     return (L.how?`<div><h4>${t.loreHow(nm)}</h4><p class="bio">${esc(L.how[i])}</p></div>`:"")+(L.moment?`<div><h4>${t.loreMoment}</h4><p class="bio">${esc(L.moment[i])}</p></div>`:"")+(L.fact?`<div><h4>${t.loreFact}</h4><p class="bio">${esc(L.fact[i])}</p></div>`:"")+(L.spoil?`<details class="spoil"><summary>${t.loreSpoil}</summary><p class="bio">${esc(L.spoil[i])}</p></details>`:"")})()}
+  ${c.a==="Prime Papa Universe"&&!c.cid&&c.id!=="preview"?`<div><h4>${t.photoH}</h4><div class="phrow"><label class="btn" for="ph-${c.id}">${PH[c.n]?t.changePhoto:t.pickPhoto}</label><input class="vh" type="file" id="ph-${c.id}" accept="image/*" data-photo="${esc(c.n)}">${PH[c.n]?`<button class="btn" type="button" data-phrm="${esc(c.n)}">${t.rmPhoto}</button>`:""}</div><p class="note" style="margin:4px 0 0">${t.photoLocal}</p></div>`:""}
   ${ageOf(c)?`<div><h4>${t.age}</h4><p class="bio">${esc(ageOf(c))}</p></div>`:""}
   ${bdOf(c)?`<div><h4>${t.bday}</h4><p class="bio">${fmtBd(bdOf(c))}${bdOf(c)===todayBd()?` · <b>${t.bdToday}!</b>`:""}</p></div>`:""}
   <div><h4>${t.role}</h4><span class="role r-${x[0]}">${t.roles[x[0]]}</span></div>
@@ -1103,14 +1110,24 @@ function moreInfo(c){const x=c.x||X[c.n];if(!x)return"";const t=tr();
   </div></details>`}
 const tierOf=k=>k>=97?"S+":k>=90?"S":k>=80?"A":"B";
 const TIERS=[["S+","Splus"],["S","S"],["A","A"],["B","B"]];
-const BASE_N=C.length,CK="ak-custom";
+const BASE_N=C.length,CK="ak-custom",PK="ak-photos";
+let PH={};try{const v=JSON.parse(localStorage.getItem(PK));if(v&&typeof v==="object")PH=v}catch(e){}
+const okImg=v=>typeof v==="string"&&v.length<90000&&/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(v);
+const photoOf=c=>okImg(c.img)?c.img:(!c.cid&&okImg(PH[c.n])?PH[c.n]:"");
+function badge(c){const im=photoOf(c),col=ANIME[c.a]||"#ffcf1f";
+  return im?`<div class="mono photo" style="--c:${col}"><img src="${im}" alt=""></div>`:`<div class="mono" style="--c:${col}"><span>${esc(ini(c.n))}</span></div>`}
+function toThumb(file){return new Promise((res,rej)=>{if(!file||!/^image\//.test(file.type||"image/")){rej();return}
+  const fr=new FileReader();fr.onerror=rej;fr.onload=()=>{const im=new Image();im.onerror=rej;im.onload=()=>{
+    const S=160,cv=document.createElement("canvas");cv.width=S;cv.height=S;const x=cv.getContext("2d");
+    const m=Math.min(im.naturalWidth,im.naturalHeight);x.fillStyle="#fff";x.fillRect(0,0,S,S);
+    x.drawImage(im,(im.naturalWidth-m)/2,(im.naturalHeight-m)/2,m,m,0,0,S,S);res(cv.toDataURL("image/jpeg",.8))};im.src=fr.result};fr.readAsDataURL(file)})}
 let RANKED=[],custom=[];
 try{const v=JSON.parse(localStorage.getItem(CK));if(Array.isArray(v))custom=v.filter(u=>u&&u.n&&Array.isArray(u.s))}catch(e){}
 const saveCustom=()=>{try{localStorage.setItem(CK,JSON.stringify(custom))}catch(e){}};
 const powOf=s=>Math.round(s.reduce((a,b)=>a+b,0)/5);
 function rebuild(){
   C.length=BASE_N;EN.length=BASE_N;
-  custom.forEach(u=>{C.push({n:u.n,a:u.a,k:u.k,s:u.s,p:u.p,m:u.m,cid:u.id,bio:u.bio||"",bd:u.bd||"",x:[u.role,u.forms,u.fights]});EN.push({p:u.p,m:u.m})});
+  custom.forEach(u=>{C.push({n:u.n,a:u.a,k:u.k,s:u.s,p:u.p,m:u.m,cid:u.id,bio:u.bio||"",bd:u.bd||"",img:okImg(u.img)?u.img:"",x:[u.role,u.forms,u.fights]});EN.push({p:u.p,m:u.m})});
   C.forEach((c,i)=>{c.id="c"+i;c.i=i;c.t=tierOf(c.k);c.pow=powOf(c.s)});
   RANKED=[...C].sort((a,b)=>b.k-a.k||b.pow-a.pow);RANKED.forEach((c,j)=>c.r=j+1);
 }
@@ -1122,7 +1139,7 @@ const ini=n=>n.replace(/\(.*\)/,"").trim().split(/\s+/).map(w=>w[0]).slice(0,2).
 let filter=null;
 
 function card(c){return `<article class="card" id="${c.id}">
-  <div class="ch"><div class="mono" style="--c:${ANIME[c.a]||"#ffcf1f"}"><span>${esc(ini(c.n))}</span></div>
+  <div class="ch">${badge(c)}
     <div class="who"><span class="rank">#${c.r}</span><h3>${esc(c.n)}</h3><p>${esc(c.a)}</p></div>
     <span class="tier t-${tcls(c.t)}" aria-label="Tier ${c.t}">${c.t}</span></div>
   <div class="cb">
@@ -1154,7 +1171,7 @@ function fillVs(){
   $("#vA").value=(C.find(c=>c.n===keepA)||C.find(c=>c.n==="Satoru Gojo")).id;$("#vB").value=(C.find(c=>c.n===keepB)||C.find(c=>c.n==="Ryomen Sukuna")).id;
 }
 let fightKey=null,fighting=false;
-function fighterHTML(c,side){return `<div class="fighter ${side}" id="f${side}"><div class="mono" style="--c:${ANIME[c.a]||"#ffcf1f"}"><span>${esc(ini(c.n))}</span></div><b>${esc(c.n)}</b><small>${esc(c.a)}</small></div>`}
+function fighterHTML(c,side){return `<div class="fighter ${side}" id="f${side}">${badge(c)}<b>${esc(c.n)}</b><small>${esc(c.a)}</small></div>`}
 const TIER_RANK={"S+":3,"S":2,"A":1,"B":0};
 function oddsOf(A,B){if(A.id===B.id)return .5;const d=(A.k*2+A.pow/10)-(B.k*2+B.pow/10);
   if(Math.abs(d)<1e-9)return .5;
@@ -1375,7 +1392,7 @@ function renderCotd(){const t=tr(),d=new Date(),key=d.getFullYear()+"-"+(d.getMo
   for(const ch of key)h=(h*31+ch.charCodeAt(0))>>>0;const c=C[h%BASE_N];if(!c){$("#cotd").innerHTML="";return}
   const jar=C.filter(x=>bdOf(x)===todayBd());
   $("#cotd").innerHTML=(jar.length?`<div class="bdbanner"><span class="rl">${t.bdToday}</span><b>${jar.map(x=>esc(x.n)).join(", ")}</b><span>${t.bdWish}</span></div>`:"")+`<div class="cotd"><span class="rl" style="align-self:flex-start">${t.cotd}</span>
-  <div class="cotd-in"><div class="mono" style="--c:${ANIME[c.a]||"#ffcf1f"}"><span>${esc(ini(c.n))}</span></div><div class="who"><span class="rank">#${c.r}</span><h3>${esc(c.n)}</h3><p>${esc(c.a)}</p></div><span class="tier t-${tcls(c.t)}">${c.t}</span></div>
+  <div class="cotd-in">${badge(c)}<div class="who"><span class="rank">#${c.r}</span><h3>${esc(c.n)}</h3><p>${esc(c.a)}</p></div><span class="tier t-${tcls(c.t)}">${c.t}</span></div>
   <p class="bio">${esc(bioOf(c))}</p>
   <div class="mkbtns"><button class="btn" type="button" data-go="${c.id}">${t.viewCard}</button><button class="btn primary" type="button" data-cotdfight="${c.id}">${t.cotdFight}</button></div></div>`}
 function applyLang(){
@@ -1420,9 +1437,11 @@ $("#vA").addEventListener("change",renderVs);
 $("#vB").addEventListener("change",renderVs);
 let editId=null;
 const MKSTAT=[80,80,80,80,80];
+let mkImg="";
 function renderMake(msg,ok){
   const t=tr(),u=editId&&custom.find(x=>x.id===editId);
   const v=u||{n:"",a:"",k:85,s:MKSTAT,p:[],m:[],role:"h",forms:[],fights:[],bio:"",bd:""};
+  if(renderMake.last!==editId){mkImg=u&&okImg(u.img)?u.img:"";renderMake.last=editId}
   const roleOpts=["h","v","a","n","u"].map(r=>`<option value="${r}"${v.role===r?" selected":""}>${t.roles[r]}</option>`).join("");
   $("#v-make").innerHTML=`<div class="mk">
   <form class="mkf" id="mkForm" novalidate>
@@ -1437,6 +1456,7 @@ function renderMake(msg,ok){
     <label class="fl"><span>${t.fForms}</span><input type="text" id="mkForms" value="${esc(v.forms.join(", "))}" placeholder="${esc(t.phForms)}"></label>
     <label class="fl"><span>${t.fFights}</span><input type="text" id="mkFights" value="${esc(v.fights.join(", "))}" placeholder="${esc(t.phFights)}"></label>
     <div class="fl"><span>${t.fBd}</span><div class="bdsel"><select id="mkBdD" aria-label="${t.day}"><option value="">${t.day}</option>${Array.from({length:31},(_,i)=>`<option value="${String(i+1).padStart(2,"0")}"${v.bd&&v.bd.slice(3)===String(i+1).padStart(2,"0")?" selected":""}>${i+1}</option>`).join("")}</select><select id="mkBdM" aria-label="${t.month}"><option value="">${t.month}</option>${Array.from({length:12},(_,i)=>`<option value="${String(i+1).padStart(2,"0")}"${v.bd&&v.bd.slice(0,2)===String(i+1).padStart(2,"0")?" selected":""}>${new Date(2000,i,1).toLocaleDateString(lang==="en"?"en-GB":"nl-NL",{month:"long"})}</option>`).join("")}</select></div></div>
+    <div class="fl"><span>${t.fPhoto}</span><div class="phrow"><div id="mkPh"></div><label class="btn" for="mkPhoto">${mkImg?t.changePhoto:t.pickPhoto}</label><input class="vh" type="file" id="mkPhoto" accept="image/*">${mkImg?`<button class="btn" type="button" id="mkPhRm">${t.rmPhoto}</button>`:""}</div><p class="note" style="margin:0">${t.photoHelp}</p></div>
     <label class="fl"><span>${t.fBio}</span><textarea id="mkBio" maxlength="600" placeholder="${esc(t.phBio)}">${esc(v.bio||"")}</textarea></label>
     ${msg?`<p class="${ok?"mkok":"mkerr"}" role="status">${esc(msg)}</p>`:""}
     <div class="mkbtns"><button class="btn primary" type="submit">${u?t.update:t.save}</button>${u?`<button class="btn" type="button" id="mkCancel">${t.cancel}</button>`:""}</div>
@@ -1452,14 +1472,14 @@ function renderMake(msg,ok){
 const lines=v=>v.split("\n").map(x=>x.trim()).filter(Boolean).slice(0,6).map(x=>x.slice(0,140));
 const commas=v=>v.split(",").map(x=>x.trim()).filter(Boolean).slice(0,6).map(x=>x.slice(0,60));
 function mkRead(){const t=tr();return{n:$("#mkName").value.trim().slice(0,40),a:($("#mkAnime").value.trim()||t.defAnime).slice(0,40),k:+$("#mkK").value,
-  s:[0,1,2,3,4].map(i=>+$("#mkS"+i).value),role:$("#mkRole").value,p:lines($("#mkP").value),m:lines($("#mkM").value),forms:commas($("#mkForms").value),fights:commas($("#mkFights").value),bio:$("#mkBio").value.trim().slice(0,600),bd:$("#mkBdD").value&&$("#mkBdM").value?$("#mkBdM").value+"-"+$("#mkBdD").value:""}}
+  s:[0,1,2,3,4].map(i=>+$("#mkS"+i).value),role:$("#mkRole").value,p:lines($("#mkP").value),m:lines($("#mkM").value),forms:commas($("#mkForms").value),fights:commas($("#mkFights").value),bio:$("#mkBio").value.trim().slice(0,600),bd:$("#mkBdD").value&&$("#mkBdM").value?$("#mkBdM").value+"-"+$("#mkBdD").value:"",img:mkImg}}
 function mkPreview(){
   if(!$("#mkForm"))return;const v=mkRead(),t=tr();
   $("#mkKv").textContent=v.k;[0,1,2,3,4].forEach(i=>$("#mkS"+i+"v").textContent=v.s[i]);
   const tier=tierOf(v.k);$("#mkTier").innerHTML=`<span class="tier t-${tcls(tier)}">${tier}</span>`;
   const r=1+C.filter(c=>c.cid!==editId&&(c.k>v.k||(c.k===v.k&&c.pow>powOf(v.s)))).length;
-  const pc={id:"preview",n:v.n||t.phName.replace(/^(bijv\. |e\.g\. )/,""),a:v.a,k:v.k,s:v.s,t:tier,pow:powOf(v.s),r,p:v.p.length?v.p:["…"],m:v.m.length?v.m:["…"],bio:v.bio,bd:v.bd,x:[v.role,v.forms,v.fights]};
-  $("#mkPreview").innerHTML=card(pc);
+  const pc={id:"preview",n:v.n||t.phName.replace(/^(bijv\. |e\.g\. )/,""),a:v.a,k:v.k,s:v.s,t:tier,pow:powOf(v.s),r,p:v.p.length?v.p:["…"],m:v.m.length?v.m:["…"],bio:v.bio,bd:v.bd,img:v.img,x:[v.role,v.forms,v.fights]};
+  $("#mkPreview").innerHTML=card(pc);if($("#mkPh"))$("#mkPh").innerHTML=badge(pc);
 }
 const enc=o=>"AK1:"+btoa(unescape(encodeURIComponent(JSON.stringify(o))))+"#";
 function dec(txt){const t=String(txt);const m=t.match(/AK1:([A-Za-z0-9+/=\s]+)#/)||t.match(/AK1:([A-Za-z0-9+/=]+)/);if(!m)return null;
@@ -1471,7 +1491,7 @@ function clean(o){if(!o||typeof o!=="object")return null;const str=(v,n)=>String
   const arr=(v,n,l)=>Array.isArray(v)?v.map(x=>str(x,l)).filter(Boolean).slice(0,n):[];
   const num=(v,a,b)=>Math.min(b,Math.max(a,Math.round(+v)||a));
   const c={n:str(o.n,40),a:str(o.a,40)||tr().defAnime,k:num(o.k,1,101),s:[0,1,2,3,4].map(i=>num(Array.isArray(o.s)?o.s[i]:50,1,100)),
-    role:["h","v","a","n","u"].includes(o.role)?o.role:"u",p:arr(o.p,6,140),m:arr(o.m,6,140),forms:arr(o.forms,6,60),fights:arr(o.fights,6,60),bio:str(o.bio,600),bd:/^(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/.test(o.bd||"")?o.bd:""};
+    role:["h","v","a","n","u"].includes(o.role)?o.role:"u",p:arr(o.p,6,140),m:arr(o.m,6,140),forms:arr(o.forms,6,60),fights:arr(o.fights,6,60),bio:str(o.bio,600),bd:/^(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/.test(o.bd||"")?o.bd:"",img:okImg(o.img)?o.img:""};
   return c.n&&c.p.length&&c.m.length?c:null}
 document.addEventListener("click",e=>{
   const sh=e.target.closest("[data-mkshare]");
@@ -1509,17 +1529,35 @@ document.addEventListener("click",e=>{
 function afterChange(){rebuild();renderTiers();fillVs();applyLang();}
 document.addEventListener("input",e=>{if(e.target.closest&&e.target.closest("#mkForm"))mkPreview()});
 document.addEventListener("change",e=>{if(["mkRole","mkBdD","mkBdM"].includes(e.target.id))mkPreview()});
+document.addEventListener("change",async e=>{
+  const el=e.target;if(!el.files||!el.files[0])return;
+  if(el.id==="mkPhoto"){try{mkImg=await toThumb(el.files[0]);const keep=mkRead();renderMakeFields(keep)}catch(err){renderMakeKeep(tr().photoErr)}return}
+  if(el.dataset&&el.dataset.photo){const n=el.dataset.photo;try{const img=await toThumb(el.files[0]);const old=PH[n];PH[n]=img;
+    try{localStorage.setItem(PK,JSON.stringify(PH))}catch(err){if(old)PH[n]=old;else delete PH[n];toast2(tr().photoFull);return}
+    reopenAfter(n)}catch(err){toast2(tr().photoErr)}}
+});
+function toast2(m){alertBox(m)}
+function alertBox(m){let d=$("#phMsg");if(!d){d=document.createElement("p");d.id="phMsg";d.className="mkerr";d.setAttribute("role","status");d.style.cssText="position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--paper);border:2px solid var(--ink);padding:8px 12px;z-index:50;max-width:90vw";document.body.appendChild(d)}d.textContent=m;d.hidden=false;clearTimeout(alertBox.h);alertBox.h=setTimeout(()=>d.hidden=true,3500)}
+function reopenAfter(n){const y=scrollY;applyLang();const c=C.find(x=>x.n===n);if(c){const el=document.getElementById(c.id);if(el){const d=el.querySelector("details.more");if(d)d.open=true}}scrollTo(0,y)}
+function renderMakeFields(v){renderMake();
+  $("#mkName").value=v.n;$("#mkAnime").value=v.a===tr().defAnime?"":v.a;$("#mkK").value=v.k;v.s.forEach((x,i)=>$("#mkS"+i).value=x);$("#mkRole").value=v.role;
+  $("#mkP").value=v.p.join("\n");$("#mkM").value=v.m.join("\n");$("#mkForms").value=v.forms.join(", ");$("#mkFights").value=v.fights.join(", ");$("#mkBio").value=v.bio;
+  if(v.bd){$("#mkBdM").value=v.bd.slice(0,2);$("#mkBdD").value=v.bd.slice(3)}mkPreview()}
 document.addEventListener("submit",e=>{if(e.target.id!=="mkForm")return;e.preventDefault();const t=tr(),v=mkRead();
   if(!v.n){renderMakeKeep(t.errName);return}
   if(!v.p.length||!v.m.length){renderMakeKeep(t.errP);return}
   if(editId){const i=custom.findIndex(x=>x.id===editId);if(i>=0)custom[i]=Object.assign({id:editId},v)}else custom.push(Object.assign({id:"u"+Date.now()},v));
-  const id=editId||custom[custom.length-1].id;editId=null;saveCustom();afterChange();
-  const c=C.find(cc=>cc.cid===id);renderMake(t.saved(c?c.r:"?"),true);
+  const id=editId||custom[custom.length-1].id;editId=null;mkImg="";renderMake.last=null;
+  let full=false;try{localStorage.setItem(CK,JSON.stringify(custom))}catch(err){const u=custom.find(x=>x.id===id);if(u)u.img="";full=true;saveCustom()}
+  afterChange();
+  const c=C.find(cc=>cc.cid===id);renderMake(t.saved(c?c.r:"?")+(full?" "+t.photoFull:""),!full);
 });
 function renderMakeKeep(msg){const old=$("#mkForm .mkerr");if(old)old.remove();const p=document.createElement("p");p.className="mkerr";p.setAttribute("role","status");p.textContent=msg;$("#mkForm .mkbtns").before(p)}
 document.addEventListener("click",e=>{
   const ed=e.target.closest("[data-mkedit]");if(ed){editId=ed.dataset.mkedit;renderMake();$("#mkForm").scrollIntoView({behavior:"smooth",block:"start"});return}
   if(e.target.id==="mkCancel"){editId=null;renderMake();return}
+  if(e.target.id==="mkPhRm"){mkImg="";renderMakeFields(mkRead());return}
+  const pr=e.target.closest("[data-phrm]");if(pr){delete PH[pr.dataset.phrm];try{localStorage.setItem(PK,JSON.stringify(PH))}catch(err){}reopenAfter(pr.dataset.phrm);return}
   const dl=e.target.closest("[data-mkdel]");if(dl){
     if(!dl.dataset.armed){dl.dataset.armed="1";dl.classList.add("warn");dl.textContent=tr().sure;setTimeout(()=>{if(dl.isConnected&&dl.dataset.armed){delete dl.dataset.armed;dl.classList.remove("warn");dl.textContent=tr().del}},3500);return}
     custom=custom.filter(x=>x.id!==dl.dataset.mkdel);if(editId===dl.dataset.mkdel)editId=null;saveCustom();afterChange();renderMake(tr().deleted,true);}
