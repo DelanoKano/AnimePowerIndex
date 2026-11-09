@@ -66,8 +66,8 @@ h1 em{font-style:normal;background:var(--ink);color:var(--paper);padding:.04em .
 .qlist li{display:flex;align-items:center;gap:10px;padding:7px 10px;cursor:pointer;border-top:1px solid var(--tone)}
 .qlist li:first-child{border-top:0}
 .qlist li[aria-selected="true"],.qlist li:hover{background:var(--tone)}
-.qlist .mono{width:32px;height:32px;flex:none}
-.qlist .mono span{width:21px;height:21px;font-size:.6rem}
+.qlist .mono{width:38px;height:38px;flex:none}
+.qlist .mono span{width:25px;height:25px;font-size:.66rem}
 .ql-txt{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.2}
 .ql-txt b{font-weight:500;font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ql-txt b mark{background:var(--s-plus);color:#111114;font-weight:700;padding:0}
@@ -87,9 +87,9 @@ h1 em{font-style:normal;background:var(--ink);color:var(--paper);padding:.04em .
 .card.flash{animation:flash 1s}
 @keyframes flash{0%,60%{box-shadow:5px 5px 0 var(--s)}}
 .ch{display:flex;gap:12px;align-items:center;padding:14px;border-bottom:3px solid var(--ink)}
-.mono{width:54px;height:54px;flex:none;border:3px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:1.35rem;color:var(--ink);
+.mono{width:66px;height:66px;flex:none;border:3px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:1.35rem;color:var(--ink);
   background-color:var(--c);background-image:radial-gradient(var(--ink) 1.1px,transparent 1.3px);background-size:6px 6px;background-blend-mode:normal;position:relative}
-.mono span{background:var(--paper);border:2px solid var(--ink);border-radius:50%;width:34px;height:34px;display:grid;place-items:center;font-size:1rem}
+.mono span{background:var(--paper);border:2px solid var(--ink);border-radius:50%;width:42px;height:42px;display:grid;place-items:center;font-size:1.1rem}
 .who{flex:1;min-width:0}
 .who h3{margin:0;font-family:var(--display);font-weight:400;font-size:1.25rem;line-height:1.1}
 .who p{margin:2px 0 0;font-size:.82rem;color:var(--muted)}
@@ -162,8 +162,8 @@ ul.fights li b{font-family:var(--display);font-weight:400;font-size:.78rem;backg
 .arena.impact::after{animation:aflash .35s ease-out}
 @keyframes aflash{0%{opacity:.85}100%{opacity:0}}
 .fighter{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 6px;text-align:center;min-width:0;transition:filter .4s,opacity .4s,transform .4s}
-.fighter .mono{width:84px;height:84px;border-width:3px}
-.fighter .mono span{width:54px;height:54px;font-size:1.35rem}
+.fighter .mono{width:100px;height:100px;border-width:3px}
+.fighter .mono span{width:64px;height:64px;font-size:1.5rem}
 .fighter b{font-family:var(--display);font-weight:400;font-size:1rem;line-height:1.15;overflow-wrap:anywhere}
 .fighter small{font-family:var(--mono);font-size:.7rem;color:var(--muted)}
 .boom{position:relative;z-index:2;font-family:var(--display);font-size:2rem;line-height:1;padding:0 4px}
@@ -184,7 +184,7 @@ ul.fights li b{font-family:var(--display);font-weight:400;font-size:.78rem;backg
 .result{display:flex;flex-direction:column;gap:14px;animation:rup .4s ease-out}
 @keyframes rup{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:none}}
 .fightbtn{font-family:var(--body);font-weight:700;font-size:1rem;padding:10px 20px}
-@media (max-width:700px){.arena{min-height:150px}.fighter .mono{width:64px;height:64px}.fighter .mono span{width:42px;height:42px;font-size:1.05rem}.fighter b{font-size:.86rem}.boom{font-size:1.5rem}}
+@media (max-width:700px){.arena{min-height:150px}.fighter .mono{width:78px;height:78px}.fighter .mono span{width:50px;height:50px;font-size:1.15rem}.fighter b{font-size:.86rem}.boom{font-size:1.5rem}}
 .kicker{margin:-2px 0 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .rounds{display:flex;flex-direction:column;gap:14px;border-left:3px solid var(--ink);padding-left:14px}
 .rd{display:flex;flex-direction:column;gap:5px}
@@ -255,8 +255,8 @@ label.btn{display:inline-block}
 .tc b{font-size:.78rem;line-height:1.2;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .tc small{font-size:.64rem;color:var(--muted);line-height:1.2;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .tc .tier{margin-top:auto}
-.tc .mono{width:52px;height:52px}
-.tc .mono span{width:34px;height:34px;font-size:.85rem}
+.tc .mono{width:60px;height:60px}
+.tc .mono span{width:38px;height:38px;font-size:.9rem}
 .tc-r{font-family:var(--mono);font-size:.5rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
 .tc-new{position:absolute;top:0;right:0;background:var(--s);color:#fff;font-size:.58rem;font-weight:700;padding:2px 5px}
 .r-leg.tc,.r-leg.ac{box-shadow:inset 0 0 0 4px var(--s-plus)}
@@ -269,8 +269,8 @@ label.btn{display:inline-block}
 .ac{all:unset;box-sizing:border-box;cursor:pointer;position:relative;border:2px solid var(--ink);padding:10px 4px 8px;display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;min-width:0;background:var(--paper)}
 .ac:focus-visible{outline:3px solid var(--s);outline-offset:2px}
 .ac b{font-size:.68rem;line-height:1.15;overflow-wrap:anywhere}
-.ac .mono{width:42px;height:42px}
-.ac .mono span{width:28px;height:28px;font-size:.72rem}
+.ac .mono{width:52px;height:52px}
+.ac .mono span{width:34px;height:34px;font-size:.8rem}
 .ac.miss{border-style:dashed;cursor:default;opacity:.7}
 .ac .tier{font-size:.62rem;padding:0 5px}
 .mono.q{background:var(--tone);background-image:none}
@@ -290,7 +290,7 @@ label.btn{display:inline-block}
 .fs-flash b{font-family:var(--display);font-weight:400;font-size:1.7rem;color:#111114;line-height:1.1;text-align:center}
 .fs-flash .mono{width:84px;height:84px}
 @keyframes burst2{0%{transform:scale(.2)}100%{transform:scale(1)}}
-@media (max-width:420px){.flip{height:180px}.tc .mono{width:44px;height:44px}.tc .mono span{width:30px;height:30px}}
+@media (max-width:420px){.flip{height:190px}.tc .mono{width:52px;height:52px}.tc .mono span{width:34px;height:34px}}
 .wallet{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border:3px solid var(--ink);padding:8px 12px;margin-bottom:16px;background:var(--paper)}
 .wallet b{font-family:var(--display);font-weight:400;font-size:1.25rem}
 .coin{width:28px;height:28px;border-radius:50%;background:var(--s-plus);border:2px solid #111114;color:#111114;display:grid;place-items:center;font-family:var(--display);font-size:.85rem;flex:none}
@@ -334,8 +334,8 @@ label.btn{display:inline-block}
 .mini{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:10px;border:2px solid var(--ink);padding:8px 10px;background:var(--paper);min-width:0;scroll-margin-top:16px}
 .mini:hover{background:var(--tone)}
 .mini:focus-visible{outline:3px solid var(--s);outline-offset:2px}
-.mini .mono{width:40px;height:40px;flex:none}
-.mini .mono span{width:26px;height:26px;font-size:.72rem}
+.mini .mono{width:50px;height:50px;flex:none}
+.mini .mono span{width:32px;height:32px;font-size:.78rem}
 .mi-txt{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.2}
 .mi-txt b{font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mi-txt small{font-size:.74rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -389,8 +389,8 @@ label.btn{display:inline-block}
   .grid{gap:12px}
   .card{border-width:2px;box-shadow:3px 3px 0 var(--ink)}
   .ch{padding:10px;gap:10px;border-bottom-width:2px}
-  .mono{width:40px;height:40px;border-width:2px}
-  .mono span{width:26px;height:26px;font-size:.78rem}
+  .mono{width:52px;height:52px;border-width:2px}
+  .mono span{width:34px;height:34px;font-size:.86rem}
   .who h3{font-size:1.02rem}
   .who p{font-size:.74rem}
   .tier{font-size:.8rem;padding:1px 6px}
@@ -894,7 +894,7 @@ const X={
 "Prime Moment Papa":["u",["Prime Moment Papa Shake"],["Saitama","Zeno"]],
 "Lord Tepelius de Grote":["h",["Winter Mode"],["Prime Moment Papa","Saitama"]]
 };
-const APP_VERSION="2.9";
+const APP_VERSION="2.9.1";
 const BD={"Prime Moment Papa":"10-25","Lord Tepelius de Grote":"01-18",
 "Monkey D. Luffy":"05-05","Roronoa Zoro":"11-11","Portgas D. Ace":"01-01","Trafalgar Law":"10-06","Shanks":"03-09","Dracule Mihawk":"03-09","Whitebeard":"04-06","Kaido":"05-01","Big Mom":"02-15","Blackbeard":"08-03","Donquixote Doflamingo":"10-23","Charlotte Katakuri":"11-25","Akainu":"08-16","Aokiji":"09-21","Kizaru":"11-23","Monkey D. Garp":"05-02","Gol D. Roger":"12-31",
 "Naruto Uzumaki":"10-10","Sasuke Uchiha":"07-23","Kakashi Hatake":"09-15","Itachi Uchiha":"06-09","Minato Namikaze":"01-25","Jiraiya":"11-11","Might Guy":"01-01","Obito Uchiha":"02-10","Madara Uchiha":"12-24","Hashirama Senju":"10-23","Boruto Uzumaki":"03-27","Pain":"09-19",
@@ -1266,7 +1266,7 @@ function badge(c){const im=photoOf(c),col=ANIME[c.a]||"#ffcf1f";
   return im?`<div class="mono photo" style="--c:${col}"><img src="${im}" alt=""></div>`:`<div class="mono" style="--c:${col}"><span>${esc(ini(c.n))}</span></div>`}
 function toThumb(file){return new Promise((res,rej)=>{if(!file||!/^image\//.test(file.type||"image/")){rej();return}
   const fr=new FileReader();fr.onerror=rej;fr.onload=()=>{const im=new Image();im.onerror=rej;im.onload=()=>{
-    const S=160,cv=document.createElement("canvas");cv.width=S;cv.height=S;const x=cv.getContext("2d");
+    const S=240,cv=document.createElement("canvas");cv.width=S;cv.height=S;const x=cv.getContext("2d");
     const m=Math.min(im.naturalWidth,im.naturalHeight);x.fillStyle="#fff";x.fillRect(0,0,S,S);
     x.drawImage(im,(im.naturalWidth-m)/2,(im.naturalHeight-m)/2,m,m,0,0,S,S);res(cv.toDataURL("image/jpeg",.8))};im.src=fr.result};fr.readAsDataURL(file)})}
 let RANKED=[],custom=[];
