@@ -574,7 +574,7 @@ const L={
   edit:"Bewerken",del:"Verwijderen",sure:"Zeker weten?",errName:"Geef je character een naam.",errP:"Voeg minstens één kracht en één minpunt toe.",
   saved:r=>`Opgeslagen! Je character staat op plek #${r}.`,share:"Delen",copy:"Kopieer code",copied:"Gekopieerd! Stuur de code naar een vriend.",copyFail:"Selecteer de code en kopieer hem zelf.",shareVia:"Deel via app",
   impTitle:"Character of back-up toevoegen",impHelp:"Plak hier de code van een vriend of van je eigen back-up. Het hele bericht plakken mag ook.",impOkN:n=>`${n} characters toegevoegd!`,impNone:"Deze characters staan al in je app.",
-  bkTitle:"Back-up van je characters",bkHelp:"Zet al je eigen characters in één code. Bewaar die goed en plak hem later bij Importeren, bijvoorbeeld op een nieuwe telefoon.",bkBtn:"Maak back-up",bkDl:"Download als bestand",bkDone:n=>`Back-up met ${n} ${n===1?"character":"characters"} klaar.`,
+  fbTitle:"Back-up van alles",fbHelp:"Bewaar al je eigen characters, je kaartencollectie, munten en foto's in één bestand. Zet het in Bestanden of iCloud, dan kun je alles terugzetten op een nieuwe telefoon.",fbMake:"Back-up maken",fbRestore:"Back-up terugzetten",fbSaved:"Back-up gemaakt! Bewaar het bestand op een veilige plek.",fbBad:"Dit bestand is geen back-up van de Krachtindex.",fbDone:(c,k,f)=>`Teruggezet: ${c} eigen characters, ${k} kaarten en ${f} foto's.`,fbFull:"Niet alle foto's pasten op deze telefoon. De rest is wel teruggezet.",fbSaveHint:"Kies in het menu \"Bewaar in Bestanden\".",bkTitle:"Back-up van je characters",bkHelp:"Zet al je eigen characters in één code. Bewaar die goed en plak hem later bij Importeren, bijvoorbeeld op een nieuwe telefoon.",bkBtn:"Maak back-up",bkDl:"Download als bestand",bkDone:n=>`Back-up met ${n} ${n===1?"character":"characters"} klaar.`,
   cotd:"Character van de dag",viewCard:"Bekijk kaart",cotdFight:"Laat vechten",impBtn:"Importeren",impOk:n=>`${n} is toegevoegd aan je characters!`,impErr:"Deze code werkt niet. Vraag je vriend om de code opnieuw te kopiëren.",shareText:n=>`Voeg ${n} toe aan je Anime Krachtindex (Maak je eigen → Importeren): `,deleted:"Character verwijderd.",phName:"bijv. Captain Vijf Minuten",phP:"Kan elk gesprek laten ontsporen\nEet een hele pizza in één hap",phM:"Altijd te laat\nBang voor duiven",phForms:"bijv. Ochtendhumeur, Weekendmodus",phFights:"bijv. De wekker, Zijn moeder"},
  en:{title:'Anime <em>Power Index</em>',lead:"The strongest anime characters side by side: what they can do, where they're vulnerable and who wins when they clash.",
   tabCards:"Characters",tabTiers:"Tier list",tabVs:"Who wins?",search:"Search by name, anime or power",
@@ -597,7 +597,7 @@ const L={
   edit:"Edit",del:"Delete",sure:"Are you sure?",errName:"Give your character a name.",errP:"Add at least one power and one weakness.",
   saved:r=>`Saved! Your character is ranked #${r}.`,share:"Share",copy:"Copy code",copied:"Copied! Send the code to a friend.",copyFail:"Select the code and copy it yourself.",shareVia:"Share via app",
   impTitle:"Add a character or backup",impHelp:"Paste a friend's code or your own backup here. Pasting the whole message works too.",impOkN:n=>`${n} characters added!`,impNone:"These characters are already in your app.",
-  bkTitle:"Back up your characters",bkHelp:"Put all your own characters into one code. Keep it safe and paste it under Import later, for example on a new phone.",bkBtn:"Create backup",bkDl:"Download as file",bkDone:n=>`Backup with ${n} ${n===1?"character":"characters"} ready.`,
+  fbTitle:"Back up everything",fbHelp:"Save all your own characters, your card collection, coins and photos in one file. Keep it in Files or iCloud so you can restore everything on a new phone.",fbMake:"Create backup",fbRestore:"Restore backup",fbSaved:"Backup created! Keep the file somewhere safe.",fbBad:"This file isn't a Power Index backup.",fbDone:(c,k,f)=>`Restored: ${c} own characters, ${k} cards and ${f} photos.`,fbFull:"Not all photos fit on this phone. Everything else was restored.",fbSaveHint:"Choose \"Save to Files\" in the menu.",bkTitle:"Back up your characters",bkHelp:"Put all your own characters into one code. Keep it safe and paste it under Import later, for example on a new phone.",bkBtn:"Create backup",bkDl:"Download as file",bkDone:n=>`Backup with ${n} ${n===1?"character":"characters"} ready.`,
   cotd:"Character of the day",viewCard:"View card",cotdFight:"Send into battle",impBtn:"Import",impOk:n=>`${n} has been added to your characters!`,impErr:"This code doesn't work. Ask your friend to copy the code again.",shareText:n=>`Add ${n} to your Anime Power Index (Create your own → Import): `,deleted:"Character deleted.",phName:"e.g. Captain Five Minutes",phP:"Can derail any conversation\nEats a whole pizza in one bite",phM:"Always late\nAfraid of pigeons",phForms:"e.g. Morning Mood, Weekend Mode",phFights:"e.g. The alarm clock, His mum"}
 };
 let lang="nl";
@@ -894,7 +894,7 @@ const X={
 "Prime Moment Papa":["u",["Prime Moment Papa Shake"],["Saitama","Zeno"]],
 "Lord Tepelius de Grote":["h",["Winter Mode"],["Prime Moment Papa","Saitama"]]
 };
-const APP_VERSION="2.9.2";
+const APP_VERSION="3.0";
 const BD={"Prime Moment Papa":"10-25","Lord Tepelius de Grote":"01-18",
 "Monkey D. Luffy":"05-05","Roronoa Zoro":"11-11","Portgas D. Ace":"01-01","Trafalgar Law":"10-06","Shanks":"03-09","Dracule Mihawk":"03-09","Whitebeard":"04-06","Kaido":"05-01","Big Mom":"02-15","Blackbeard":"08-03","Donquixote Doflamingo":"10-23","Charlotte Katakuri":"11-25","Akainu":"08-16","Aokiji":"09-21","Kizaru":"11-23","Monkey D. Garp":"05-02","Gol D. Roger":"12-31",
 "Naruto Uzumaki":"10-10","Sasuke Uchiha":"07-23","Kakashi Hatake":"09-15","Itachi Uchiha":"06-09","Minato Namikaze":"01-25","Jiraiya":"11-11","Might Guy":"01-01","Obito Uchiha":"02-10","Madara Uchiha":"12-24","Hashirama Senju":"10-23","Boruto Uzumaki":"03-27","Pain":"09-19",
@@ -1659,7 +1659,9 @@ function renderMake(msg,ok){
   <div class="mkside">
     <div><p class="mklab">${t.preview}</p><div id="mkPreview" style="margin-top:8px"></div></div>
     <div class="mine"><p class="mklab">${t.mine} (${custom.length})</p>${custom.length?[...custom].map(x=>{const c=C.find(cc=>cc.cid===x.id);return `<div class="mrow2"><span class="nm">${esc(x.n)}<small>#${c?c.r:"?"} · Tier ${tierOf(x.k)} · ${esc(x.a)}</small></span><button class="btn" type="button" data-mkshare="${x.id}">${t.share}</button><button class="btn" type="button" data-mkedit="${x.id}">${t.edit}</button><button class="btn" type="button" data-mkdel="${x.id}">${t.del}</button><div class="sharebox" id="sb-${x.id}" hidden></div></div>`}).join(""):`<p class="note" style="margin:0">${t.none}</p>`}</div>
-    ${custom.length?`<div class="imp"><p class="mklab">${t.bkTitle}</p><p class="note" style="margin:0">${t.bkHelp}</p><div class="mkbtns"><button class="btn primary" type="button" id="bkBtn">${t.bkBtn}</button></div><div class="sharebox" id="bkBox" hidden></div></div>`:""}
+    <div class="imp"><p class="mklab">${t.fbTitle}</p><p class="note" style="margin:0">${t.fbHelp}</p>
+      <div class="mkbtns"><button class="btn primary" type="button" id="fbMake">${t.fbMake}</button><label class="btn" for="fbFile">${t.fbRestore}</label><input class="vh" type="file" id="fbFile" accept=".json,application/json,text/plain"></div>
+      <p class="mkok" id="fbMsg" hidden></p></div>
     <div class="imp"><p class="mklab">${t.impTitle}</p><p class="note" style="margin:0">${t.impHelp}</p><textarea id="impText" aria-label="${esc(t.impTitle)}" placeholder="AK1:…"></textarea><p id="impMsg" class="mkerr" hidden role="status"></p><button class="btn primary" type="button" id="impBtn">${t.impBtn}</button></div>
   </div></div>`;
   mkPreview();
@@ -1721,6 +1723,25 @@ document.addEventListener("click",e=>{
   const cf=e.target.closest("[data-cotdfight]");if(cf){const c=C.find(x=>x.id===cf.dataset.cotdfight);let o;do{o=C[Math.floor(Math.random()*C.length)]}while(o===c);
     $("#vA").value=c.id;$("#vB").value=o.id;fightKey=null;show("vs");renderVs();window.scrollTo(0,0);fight();return}
 });
+function fullBackup(){return JSON.stringify({app:"krachtindex",v:2,date:new Date().toISOString(),custom:custom.map(({id,...r})=>r),cards:{own:G.own,coins:G.coins,extra:G.extra||0,fights:G.fights||0},photos:PH})}
+async function saveBackup(){const t=tr(),d=new Date(),name=`krachtindex-backup-${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}.json`;
+  const blob=new Blob([fullBackup()],{type:"application/json"});const msg=$("#fbMsg");
+  try{const f=new File([blob],name,{type:"application/json"});
+    if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:name});msg.textContent=t.fbSaved;msg.hidden=false;return}}catch(err){if(err&&err.name==="AbortError")return}
+  try{const u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);msg.textContent=t.fbSaved;msg.hidden=false}catch(err){}}
+function restoreBackup(text){const t=tr();let o;try{o=JSON.parse(text)}catch(e){o=null}
+  if(!o||o.app!=="krachtindex"){const list=decAll(text);if(!list)return{err:t.fbBad};o={custom:list,cards:null,photos:null}}
+  let nc=0,nk=0,nf=0,full=false;const sig=c=>(c.n+"|"+(c.p[0]||"")).toLowerCase();const have=new Set(custom.map(sig));
+  (Array.isArray(o.custom)?o.custom:[]).forEach((x,i)=>{const c=clean(x);if(!c||have.has(sig(c)))return;have.add(sig(c));custom.push(Object.assign({id:"u"+Date.now()+"_"+i},c));nc++});
+  const names=new Set(pool().map(c=>c.n));
+  if(o.cards&&typeof o.cards==="object"){const own=o.cards.own||{};Object.keys(own).forEach(n=>{const v=Math.floor(+own[n]);if(names.has(n)&&v>0){if(v>(G.own[n]||0))G.own[n]=v;nk+=v}});
+    ["coins","extra","fights"].forEach(k=>{const v=Math.floor(+o.cards[k]);if(v>0&&v<1e6)G[k]=Math.max(G[k]||0,v)});saveG()}
+  if(o.photos&&typeof o.photos==="object"){Object.keys(o.photos).forEach(n=>{if(names.has(n)&&okImg(o.photos[n])){PH[n]=o.photos[n];nf++}});
+    try{localStorage.setItem(PK,JSON.stringify(PH))}catch(e){full=true;try{const keep={};for(const k of Object.keys(PH)){keep[k]=PH[k];try{localStorage.setItem(PK,JSON.stringify(keep))}catch(e2){delete keep[k];nf--;}}PH=keep}catch(e3){}}}
+  saveCustom();afterChange();return{msg:t.fbDone(nc,nk,nf)+(full?" "+t.fbFull:"")}}
+document.addEventListener("click",e=>{if(e.target.id==="fbMake"){saveBackup()}});
+document.addEventListener("change",e=>{if(e.target.id!=="fbFile")return;const f=e.target.files&&e.target.files[0];if(!f)return;const r=new FileReader();
+  r.onload=()=>{const res=restoreBackup(String(r.result));renderMake();const m=$("#fbMsg");if(m){m.textContent=res.err||res.msg;m.className=res.err?"mkerr":"mkok";m.hidden=false;m.scrollIntoView({block:"nearest"})}};r.readAsText(f)});
 function afterChange(){rebuild();renderTiers();fillVs();applyLang();}
 document.addEventListener("input",e=>{if(e.target.closest&&e.target.closest("#mkForm"))mkPreview()});
 document.addEventListener("change",e=>{if(["mkRole","mkBdD","mkBdM"].includes(e.target.id))mkPreview()});
