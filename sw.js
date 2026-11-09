@@ -1,5 +1,5 @@
 // Anime Krachtindex – offline support
-const CACHE = "krachtindex-v2.8";
+const CACHE = "krachtindex-v2.9";
 const CORE = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png", "./favicon-32.png"];
 
 self.addEventListener("install", e => {
