@@ -60,7 +60,21 @@ h1 em{font-style:normal;background:var(--ink);color:var(--paper);padding:.04em .
 .toolbar select,.chips select{padding:9px 10px}
 .toolbar>.chips{flex:1 1 220px;min-width:0;max-width:340px}
 .toolbar>.chips select{width:100%}
-.toolbar>input{flex:2 1 240px}
+.toolbar>.qwrap{flex:2 1 240px;position:relative;min-width:0;scroll-margin-top:calc(env(safe-area-inset-top,0px) + 10px)}
+.qwrap input{width:100%;box-sizing:border-box}
+.qlist{position:absolute;top:calc(100% + 4px);left:0;right:0;z-index:30;margin:0;padding:0;list-style:none;border:2px solid var(--ink);background:var(--paper);box-shadow:5px 5px 0 var(--ink);max-height:min(60vh,420px);overflow-y:auto}
+.qlist li{display:flex;align-items:center;gap:10px;padding:7px 10px;cursor:pointer;border-top:1px solid var(--tone)}
+.qlist li:first-child{border-top:0}
+.qlist li[aria-selected="true"],.qlist li:hover{background:var(--tone)}
+.qlist .mono{width:32px;height:32px;flex:none}
+.qlist .mono span{width:21px;height:21px;font-size:.6rem}
+.ql-txt{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.2}
+.ql-txt b{font-weight:500;font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ql-txt b mark{background:var(--s-plus);color:#111114;font-weight:700;padding:0}
+.ql-txt small{font-size:.72rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qlist .tier{font-size:.72rem;padding:0 6px;flex:none}
+.qlist .ql-none{cursor:default;color:var(--muted);font-size:.85rem}
+.qlist .ql-none:hover{background:none}
 @media (max-width:700px){.toolbar>#sort,.toolbar>.chips{flex:1 1 140px;max-width:none}.toolbar>.chips select,.toolbar>#sort{width:100%;max-width:none}}
 .chips{display:flex;gap:6px;flex-wrap:wrap}
 .chips select{border:2px solid var(--ink);border-radius:0;padding:8px 10px;background:var(--paper);max-width:100%;font-weight:700}
@@ -435,7 +449,7 @@ label.btn{display:inline-block}
     <div id="welcome"></div>
     <div id="cotd"></div>
     <div class="toolbar">
-      <input id="q" type="search" placeholder="Zoek op naam, anime of kracht" aria-label="Zoeken" autocomplete="off" data-i18n-ph="search">
+      <div class="qwrap"><input id="q" type="search" placeholder="Zoek op naam, anime of kracht" aria-label="Zoeken" autocomplete="off" data-i18n-ph="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="qList"><ul class="qlist" id="qList" role="listbox" hidden></ul></div>
       <select id="sort" aria-label="Sorteren">
         <option value="rank" data-i18n="sRank">Sorteer: ranking</option>
         <option value="kracht" data-i18n="s0">Sorteer: kracht</option>
@@ -552,7 +566,7 @@ const L={
   winP:(w,k,m,l)=>`${w} wint op ${k} van de 5 eigenschappen. Maar let op het minpunt van ${w}: ${m}. Daar kan ${l} zijn kans pakken.`,
   scoreLine:(a,b)=>`Krachtscore ${a} tegen ${b}.`,
   fight:"Vechten!",rematch:"Rematch!",oddsL:"Winkans",tallyL:(n,a,x,b,y)=>`Stand na ${n} ${n===1?"gevecht":"gevechten"}: ${a} ${x} – ${y} ${b}`,draws:n=>n?` (${n}× gelijk)`:"",upsetH:n=>`Stunt! ${n} wint tegen de verwachting in`,kickU:["De grootste stunt van het jaar","Niemand zag dit aankomen","Tegen alle verwachtingen in"],pending:"Tik op Vechten! om te zien wie wint.",winnerW:"WINNAAR",drawW:"GELIJK",booms:["BAM!","POW!","DOEF!","KRAK!","WHAM!"],
-  tabPlay:"Spelen",tabMake:"Maak je eigen",vBig:"Groot",vSmall:"Compact",collapse:"Klein maken",help:"Hoe werkt het?",wTitle:"Welkom bij de Krachtindex!",wClose:"Begrepen",
+  tabPlay:"Spelen",tabMake:"Maak je eigen",vBig:"Groot",vSmall:"Compact",qNone:"Geen character gevonden",collapse:"Klein maken",help:"Hoe werkt het?",wTitle:"Welkom bij de Krachtindex!",wClose:"Begrepen",
   wItems:[["cards","Characters","Hier ben je nu. Tik op een naam voor het verhaal, de krachten en spoilers."],["vs","Wie wint?","Laat twee characters vechten en lees het gevechtsverhaal."],["play","Spelen","Verzamel kaarten met munten en maak fusies."],["make","Maak je eigen","Zet jezelf of je vrienden in de app, met foto."]],mkTitle:"Maak je eigen character",mkIntro:"Je eigen characters worden op dit apparaat bewaard en doen overal mee: in de ranking, de tierlijst en bij Wie wint?",
   fName:"Naam",fAnime:"Uit welke anime of groep?",defAnime:"Mijn characters",fK:"Totale kracht (bepaalt de ranking)",fStats:"Scores",fRole:"Rol",
   fP:"Krachten (één per regel)",fM:"Minpunten (één per regel)",fForms:"Vormen en transformaties (scheid met komma's)",fFights:"Bekende gevechten (scheid met komma's)",fBio:"Verhaal (optioneel)",fPhoto:"Foto (optioneel)",pickPhoto:"Foto kiezen",changePhoto:"Andere foto",rmPhoto:"Foto weghalen",photoHelp:"De foto wordt klein gemaakt en op dit apparaat bewaard. Deel je het character, dan gaat de foto mee.",photoLocal:"Deze foto staat alleen op dit apparaat.",photoErr:"Deze foto kon niet worden geladen. Probeer een andere.",photoFull:"Je telefoon heeft geen ruimte meer voor deze foto. Haal eerst een andere foto weg.",photoH:"Foto",phBio:"Wie is dit? Waar komt hij vandaan en wat wil hij bereiken?",
@@ -575,7 +589,7 @@ const L={
   winP:(w,k,m,l)=>`${w} wins on ${k} of the 5 stats. But watch out for ${w}'s weakness: ${m}. That's where ${l} could take their chance.`,
   scoreLine:(a,b)=>`Power score ${a} vs ${b}.`,
   fight:"Fight!",rematch:"Rematch!",oddsL:"Win chance",tallyL:(n,a,x,b,y)=>`Score after ${n} ${n===1?"fight":"fights"}: ${a} ${x} – ${y} ${b}`,draws:n=>n?` (${n} draws)`:"",upsetH:n=>`Upset! ${n} wins against the odds`,kickU:["The upset of the year","Nobody saw this coming","Against all odds"],pending:"Tap Fight! to see who wins.",winnerW:"WINNER",drawW:"DRAW",booms:["BAM!","POW!","BOOM!","CRACK!","WHAM!"],
-  tabPlay:"Play",tabMake:"Create",vBig:"Large",vSmall:"Compact",collapse:"Collapse",help:"How does it work?",wTitle:"Welcome to the Power Index!",wClose:"Got it",
+  tabPlay:"Play",tabMake:"Create",vBig:"Large",vSmall:"Compact",qNone:"No character found",collapse:"Collapse",help:"How does it work?",wTitle:"Welcome to the Power Index!",wClose:"Got it",
   wItems:[["cards","Characters","You're here now. Tap a name for the story, powers and spoilers."],["vs","Who wins?","Make two characters fight and read the battle story."],["play","Play","Collect cards with coins and create fusions."],["make","Create","Add yourself or your friends to the app, with a photo."]],mkTitle:"Create your own character",mkIntro:"Your own characters are saved on this device and join everything: the ranking, the tier list and Who wins?",
   fName:"Name",fAnime:"From which anime or group?",defAnime:"My characters",fK:"Overall power (sets the ranking)",fStats:"Stats",fRole:"Role",
   fP:"Powers (one per line)",fM:"Weaknesses (one per line)",fForms:"Forms and transformations (separate with commas)",fFights:"Famous fights (separate with commas)",fBio:"Story (optional)",fPhoto:"Photo (optional)",pickPhoto:"Choose photo",changePhoto:"Change photo",rmPhoto:"Remove photo",photoHelp:"The photo is shrunk and saved on this device. If you share the character, the photo goes along.",photoLocal:"This photo is only saved on this device.",photoErr:"This photo couldn't be loaded. Try another one.",photoFull:"Your phone has no room left for this photo. Remove another photo first.",photoH:"Photo",phBio:"Who is this? Where do they come from and what do they want?",
@@ -880,7 +894,7 @@ const X={
 "Prime Moment Papa":["u",["Prime Moment Papa Shake"],["Saitama","Zeno"]],
 "Lord Tepelius de Grote":["h",["Winter Mode"],["Prime Moment Papa","Saitama"]]
 };
-const APP_VERSION="2.7.1";
+const APP_VERSION="2.8";
 const BD={"Prime Moment Papa":"10-25","Lord Tepelius de Grote":"01-18",
 "Monkey D. Luffy":"05-05","Roronoa Zoro":"11-11","Portgas D. Ace":"01-01","Trafalgar Law":"10-06","Shanks":"03-09","Dracule Mihawk":"03-09","Whitebeard":"04-06","Kaido":"05-01","Big Mom":"02-15","Blackbeard":"08-03","Donquixote Doflamingo":"10-23","Charlotte Katakuri":"11-25","Akainu":"08-16","Aokiji":"09-21","Kizaru":"11-23","Monkey D. Garp":"05-02","Gol D. Roger":"12-31",
 "Naruto Uzumaki":"10-10","Sasuke Uchiha":"07-23","Kakashi Hatake":"09-15","Itachi Uchiha":"06-09","Minato Namikaze":"01-25","Jiraiya":"11-11","Might Guy":"01-01","Obito Uchiha":"02-10","Madara Uchiha":"12-24","Hashirama Senju":"10-23","Boruto Uzumaki":"03-27","Pain":"09-19",
@@ -1585,7 +1599,33 @@ document.addEventListener("click",e=>{
   if(e.target.id==="rnd"){if(fighting)return;const a=Math.floor(Math.random()*C.length);let b;do{b=Math.floor(Math.random()*C.length)}while(b===a);$("#vA").value=C[a].id;$("#vB").value=C[b].id;fightKey=null;renderVs();fight();return}
   if(e.target.id==="fightBtn"){fight();return}
 });
-$("#q").addEventListener("input",renderCards);
+$("#q").addEventListener("input",()=>{renderCards();suggest()});
+const norm=x=>String(x).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+let qSel=-1,qItems=[];
+function suggest(){const el=$("#q"),list=$("#qList"),raw=el.value.trim(),q=norm(raw);
+  if(!q){closeSuggest();return}
+  const scored=[];C.forEach(c=>{const n=norm(c.n);let sc=-1;
+    if(n.startsWith(q))sc=0;else if(n.split(/[\s.()]+/).some(w=>w.startsWith(q)))sc=1;else if(n.includes(q))sc=2;
+    if(sc>=0)scored.push({c,sc})});
+  scored.sort((a,b)=>a.sc-b.sc||a.c.r-b.c.r);qItems=scored.slice(0,8).map(x=>x.c);qSel=-1;
+  const hl=n=>{const i=norm(n).indexOf(q);return i<0?esc(n):esc(n.slice(0,i))+"<mark>"+esc(n.slice(i,i+raw.length))+"</mark>"+esc(n.slice(i+raw.length))};
+  list.innerHTML=qItems.length?qItems.map((c,i)=>`<li role="option" id="qo-${i}" data-qpick="${c.id}" aria-selected="false">${badge(c)}<span class="ql-txt"><b>${hl(c.n)}</b><small>#${c.r} · ${esc(c.a)}</small></span><span class="tier t-${tcls(c.t)}">${c.t}</span></li>`).join(""):`<li class="ql-none" role="option" aria-disabled="true">${esc(tr().qNone)}</li>`;
+  list.hidden=false;el.setAttribute("aria-expanded","true");el.removeAttribute("aria-activedescendant")}
+function closeSuggest(){const l=$("#qList");if(l){l.hidden=true;l.innerHTML=""}$("#q").setAttribute("aria-expanded","false");$("#q").removeAttribute("aria-activedescendant");qSel=-1;qItems=[]}
+function moveSel(d){if(!qItems.length)return;qSel=(qSel+d+qItems.length)%qItems.length;
+  document.querySelectorAll("#qList [data-qpick]").forEach((li,i)=>li.setAttribute("aria-selected",i===qSel));
+  const li=document.getElementById("qo-"+qSel);if(li){li.scrollIntoView({block:"nearest"});$("#q").setAttribute("aria-activedescendant",li.id)}}
+function pickChar(id){closeSuggest();if(viewMode==="small")expanded.add(id);filter=null;$("#q").value="";$("#sort").value="rank";renderChips();renderCards();show("cards");
+  const el=document.getElementById(id);if(!el)return;const d=el.querySelector("details.more");if(d)d.open=true;
+  el.scrollIntoView({behavior:"smooth",block:"start"});el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");$("#q").blur()}
+$("#q").addEventListener("keydown",e=>{if($("#qList").hidden)return;
+  if(e.key==="ArrowDown"){e.preventDefault();moveSel(1)}else if(e.key==="ArrowUp"){e.preventDefault();moveSel(-1)}
+  else if(e.key==="Enter"){if(qSel>=0&&qItems[qSel]){e.preventDefault();pickChar(qItems[qSel].id)}else closeSuggest()}
+  else if(e.key==="Escape"){closeSuggest()}});
+$("#q").addEventListener("focus",()=>{if($("#q").value.trim())suggest();
+  if(matchMedia("(max-width:700px)").matches)setTimeout(()=>{const w=$(".qwrap");if(w&&w.getBoundingClientRect().top>80)w.scrollIntoView({block:"start",behavior:"smooth"})},250)});
+document.addEventListener("pointerdown",e=>{const pk=e.target.closest("[data-qpick]");if(pk){e.preventDefault();pickChar(pk.dataset.qpick);return}
+  if(!e.target.closest(".qwrap"))closeSuggest()});
 $("#sort").addEventListener("change",renderCards);
 document.addEventListener("change",e=>{if(e.target.id==="animeSel"){filter=e.target.value||null;renderCards()}});
 $("#vA").addEventListener("change",renderVs);
