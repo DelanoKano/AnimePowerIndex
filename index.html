@@ -305,8 +305,6 @@ label.btn{display:inline-block}
 .pk-art{height:84px;border-bottom:3px solid var(--ink);display:grid;place-items:center;background-image:repeating-conic-gradient(from 0deg at 50% 50%,rgba(17,17,20,.14) 0deg 4deg,transparent 4deg 10deg)}
 .pk-art span{width:52px;height:52px;border-radius:50%;background:#fff;border:3px solid #111114;display:grid;place-items:center;font-family:var(--display);font-size:1.5rem;color:#111114}
 .pk-std .pk-art,.flip.pk-std .back{background-color:var(--s-plus)}
-.pk-ppu .pk-art,.flip.pk-ppu .back{background-color:#111114;background-image:repeating-conic-gradient(from 0deg at 50% 50%,rgba(255,207,31,.35) 0deg 4deg,transparent 4deg 10deg)}
-.pk-ppu .pk-art span,.flip.pk-ppu .back span{background:var(--s-plus)}
 .pk-s .pk-art,.flip.pk-s .back{background-color:var(--s)}
 .tc-new.dup{background:var(--muted)}
 .duprow{display:flex;flex-wrap:wrap;gap:6px}
@@ -505,7 +503,7 @@ const ANIME={
   "Sword Art Online":"#4a7fd6","Overlord":"#8e7a5a","The Disastrous Life of Saiki K.":"#e88ab8","Gurren Lagann":"#e2452c",
   "The Misfit of Demon King Academy":"#6c5fd6","Spy x Family":"#d6577a","Kaiju No. 8":"#3fa79a","Frieren":"#7fb6a6","Berserk":"#8a8a8a",
   "Dandadan":"#e6553a","Hell's Paradise":"#c94b6a","Vinland Saga":"#6f8fa8","Mashle":"#d9a06b","Undead Unluck":"#7a5dc7",
-  "Sakamoto Days":"#3f8f6b","Soul Eater":"#a03a3a","Yu Yu Hakusho":"#3b7bd6","Inuyasha":"#d64848","Prime Papa Universe":"#ffcf1f"};
+  "Sakamoto Days":"#3f8f6b","Soul Eater":"#a03a3a","Yu Yu Hakusho":"#3b7bd6","Inuyasha":"#d64848"};
 const C=[
  {n:"Zeno",a:"Dragon Ball",t:"S+",s:[100,70,95,30,40],p:["Kan hele universums met één gebaar laten verdwijnen","Staat boven alle goden in het Dragon Ball-universum","Er bestaat een kopie van hem uit een andere tijdlijn"],m:["Gedraagt zich als een kind en doet wat zijn adviseurs zeggen","Vecht zelf nooit, dus hij heeft geen echte gevechtservaring"]},
  {n:"Saitama",a:"One Punch Man",t:"S+",s:[100,96,95,30,45],p:["Wint vrijwel elk gevecht met één klap","Serious Punch die zelfs het weer verandert","Snelheid en uithoudingsvermogen zonder bekende limiet"],m:["Verveelt zich omdat niemand hem uitdaagt","Neemt gevechten niet serieus en heeft geen vechttechniek","Krijgt amper erkenning, wat hem soms onzeker maakt"]},
@@ -734,8 +732,6 @@ const C2=[
 ["Inuyasha","Inuyasha",80,[86,85,80,70,55],["Tessaiga","Wind Scar"],["Wordt een gewoon mens bij nieuwe maan","Koppig"],["Tessaiga","Wind Scar"],["Turns human on the new moon","Stubborn"]],
 ["Sesshomaru","Inuyasha",85,[86,88,84,90,85],["Bakusaiga","Tenseiga","Ware demonenvorm"],["Trots","Kijkt neer op mensen"],["Bakusaiga","Tenseiga","True demon form"],["Proud","Looks down on humans"]],
 ["Naraku","Inuyasha",84,[80,80,90,85,95],["Shikon-juweel","Regeneratie","Barrières"],["Afhankelijk van het Shikon-juweel","Zijn menselijke hart"],["Shikon Jewel","Regeneration","Barriers"],["Depends on the Shikon Jewel","His human heart"]],
-["Prime Moment Papa","Prime Papa Universe",101,[100,96,99,97,5],["Het Voorhoofd: zo groot en glanzend dat het zonlicht weerkaatst en tegenstanders verblindt","Voorhoofd-kopstoot die bergen doormidden splijt","Prime Moment: op zijn beste moment is hij door niemand te verslaan"],["Zijn haarlijn trekt zich elke seconde een stukje verder terug","Vertelt de flauwste vadergrappen ter wereld, middenin het gevecht"],["The Forehead: so big and shiny it reflects sunlight and blinds opponents","A forehead headbutt that splits mountains in half","Prime Moment: at his peak, no one can beat him"],["His hairline retreats a little further every second","Tells the worst dad jokes in the world, mid-fight"]],
-["Lord Tepelius de Grote","Prime Papa Universe",100.5,[90,75,95,85,50],["Tepelradar: voelt elke tegenstander aankomen, vooral als het koud is","Dubbele Tepelstraal: twee laserstralen tegelijk, links en rechts","Stalen Borst: geen enkele aanval komt door zijn T-shirt heen"],["Elk wit T-shirt verraadt meteen waar hij staat","Verliest al zijn concentratie bij één koude windvlaag"],["Nipple Radar: senses every opponent coming, especially when it's cold","Double Nipple Beam: two laser beams at once, left and right","Steel Chest: no attack gets through his T-shirt"],["Every white T-shirt instantly gives away his position","Loses all focus at a single cold breeze"]]
 ];
 const K0={"Zeno":100,"Saitama":99,"Goku":98,"Satoru Gojo":95,"Ryomen Sukuna":95,"Madara Uchiha":93,"Naruto Uzumaki":94,"Monkey D. Luffy":93,"Kaido":92,"Whitebeard":92,"Sosuke Aizen":94,"Yhwach":94,"Meruem":93,"Rimuru Tempest":96,"Isaac Netero":86,"Escanor":88,"Muzan Kibutsuji":84,"Yoriichi Tsugikuni":87,"Eren Yeager":89,"All Might":85,"Shigeo Kageyama (Mob)":88};
 C.forEach(c=>c.k=K0[c.n]);
@@ -891,11 +887,9 @@ const X={
 "Inuyasha":["h",["Demon form"],["Sesshomaru","Naraku"]],
 "Sesshomaru":["a",["True demon form"],["Inuyasha","Naraku"]],
 "Naraku":["v",[],["Inuyasha","Sesshomaru"]],
-"Prime Moment Papa":["u",["Prime Moment Papa Shake"],["Saitama","Zeno"]],
-"Lord Tepelius de Grote":["h",["Winter Mode"],["Prime Moment Papa","Saitama"]]
 };
-const APP_VERSION="3.0.1";
-const BD={"Prime Moment Papa":"10-25","Lord Tepelius de Grote":"01-18",
+const APP_VERSION="3.1";
+const BD={
 "Monkey D. Luffy":"05-05","Roronoa Zoro":"11-11","Portgas D. Ace":"01-01","Trafalgar Law":"10-06","Shanks":"03-09","Dracule Mihawk":"03-09","Whitebeard":"04-06","Kaido":"05-01","Big Mom":"02-15","Blackbeard":"08-03","Donquixote Doflamingo":"10-23","Charlotte Katakuri":"11-25","Akainu":"08-16","Aokiji":"09-21","Kizaru":"11-23","Monkey D. Garp":"05-02","Gol D. Roger":"12-31",
 "Naruto Uzumaki":"10-10","Sasuke Uchiha":"07-23","Kakashi Hatake":"09-15","Itachi Uchiha":"06-09","Minato Namikaze":"01-25","Jiraiya":"11-11","Might Guy":"01-01","Obito Uchiha":"02-10","Madara Uchiha":"12-24","Hashirama Senju":"10-23","Boruto Uzumaki":"03-27","Pain":"09-19",
 "Satoru Gojo":"12-07","Yuji Itadori":"03-20","Megumi Fushiguro":"12-22","Yuta Okkotsu":"03-07","Suguru Geto":"02-03",
@@ -1085,8 +1079,6 @@ const BIO={
 "Inuyasha":["Inuyasha is half mens, half demon en zat vijftig jaar vastgepind aan een boom. Kagome bevrijdde hem, en samen zoeken ze de scherven van het Shikon-juweel.","Inuyasha is half human, half demon and was pinned to a tree for fifty years. Kagome freed him, and together they search for the shards of the Shikon Jewel."],
 "Sesshomaru":["Sesshomaru is de halfbroer van Inuyasha en een volbloed demon. Hij kijkt neer op mensen, maar werd zachter door het meisje Rin.","Sesshomaru is Inuyasha's half-brother and a full-blooded demon. He looks down on humans, but softened because of the girl Rin."],
 "Naraku":["Naraku is een demon die ontstond uit een menselijke bandiet en talloze demonen. Hij manipuleert iedereen om het Shikon-juweel te bemachtigen.","Naraku is a demon born from a human bandit and countless demons. He manipulates everyone to get his hands on the Shikon Jewel."],
-"Prime Moment Papa":["Prime Moment Papa is de legende van het Prime Papa Universe. Niemand weet waar hij vandaan komt, maar iedereen kent zijn voorhoofd, dat al van kilometers afstand te zien is.","Prime Moment Papa is the legend of the Prime Papa Universe. Nobody knows where he came from, but everyone knows his forehead, visible from miles away."],
-"Lord Tepelius de Grote":["Lord Tepelius de Grote is de grote rivaal van Prime Moment Papa. Hij trainde jarenlang in de ijzige kou, tot zijn Tepelradar perfect werkte.","Lord Tepelius the Great is Prime Moment Papa's great rival. He trained for years in freezing cold until his Nipple Radar worked perfectly."]
 };
 const LORE={
 "Goku":{how:["Hij trainde bij Meester Roshi, King Kai en later bij de engel Whis. Elk zwaar gevecht maakte hem sterker, en hij zocht steeds een nog sterkere leraar.","He trained under Master Roshi, King Kai and later the angel Whis. Every tough fight made him stronger, and he kept looking for an even stronger teacher."],moment:["Op Namek werd hij voor het eerst Super Saiyan, uit woede nadat Frieza zijn beste vriend Krillin had gedood.","On Namek he became a Super Saiyan for the first time, out of rage after Frieza killed his best friend Krillin."],fact:["Zijn Saiyan-naam is Kakarot, en hij is als de dood voor injectienaalden.","His Saiyan name is Kakarot, and he's terrified of injection needles."],spoil:["Goku is al meerdere keren doodgegaan, onder andere toen hij Cell wegteleporteerde om de aarde te redden.","Goku has died more than once, including when he teleported Cell away to save Earth."]},
@@ -1119,8 +1111,6 @@ const LORE={
 "L":{how:["Hij groeide op in het weeshuis Wammy's House, waar briljante kinderen werden opgeleid.","He grew up at Wammy's House, an orphanage that trained brilliant children."],moment:["Op de toelatingsceremonie van de universiteit vertelde hij Light gewoon dat hij L was.","At the university entrance ceremony he simply told Light that he was L."],fact:["Zijn volledige naam is L Lawliet.","His full name is L Lawliet."],spoil:["Hij werd gedood door de shinigami Rem, die Light en Misa wilde beschermen.","He was killed by the shinigami Rem, who wanted to protect Light and Misa."]},
 "Rimuru Tempest":{how:["Met zijn vaardigheden Predator en Great Sage at hij van alles op, inclusief de Stormdraak Veldora.","With his skills Predator and Great Sage he devoured all sorts of things, including the Storm Dragon Veldora."],moment:["Na de aanval op zijn stad Tempest werd hij een echte Demon Lord.","After the attack on his city Tempest he became a true Demon Lord."],fact:["In zijn vorige leven heette hij Satoru Mikami.","In his previous life his name was Satoru Mikami."],spoil:["Om Demon Lord te worden, versloeg hij in zijn eentje een leger van twintigduizend soldaten.","To become a Demon Lord, he single-handedly defeated an army of twenty thousand soldiers."]},
 "Frieza":{how:["Hij werd geboren met enorme kracht en trainde pas voor het eerst om Golden Frieza te worden.","He was born with immense power and only trained for the first time to become Golden Frieza."],moment:["Op Namek doodde hij Krillin, waardoor Goku voor het eerst Super Saiyan werd.","On Namek he killed Krillin, which made Goku turn Super Saiyan for the first time."],fact:["Zijn vader is King Cold en zijn broer heet Cooler.","His father is King Cold and his brother is named Cooler."],spoil:["Hij trainde tien jaar in een kamer waar de tijd anders loopt om Black Frieza te worden.","He trained for ten years in a room where time flows differently to become Black Frieza."]},
-"Prime Moment Papa":{how:["Elke ochtend poetst hij zijn voorhoofd honderd keer tot het glanst als een spiegel. Zo bouwde hij een kracht op die niemand kan evenaren.","Every morning he polishes his forehead a hundred times until it shines like a mirror. That's how he built a power no one can match."],moment:["De dag dat hij de zon weerkaatste en een hele zonsverduistering liet verdwijnen.","The day he reflected the sun and made an entire solar eclipse disappear."],fact:["Hij heeft nog nooit een kam nodig gehad, maar heeft er wel twaalf.","He has never needed a comb, but owns twelve of them."],spoil:["Zijn ware kracht komt pas vrij met de Prime Moment Papa Shake, en het recept is nog steeds geheim.","His true power is only unlocked with the Prime Moment Papa Shake, and the recipe is still a secret."]},
-"Lord Tepelius de Grote":{how:["Hij trainde jarenlang in een vriezer om zijn Tepelradar te perfectioneren.","He trained for years inside a freezer to perfect his Nipple Radar."],moment:["Toen hij in de winter zonder jas een hele straat schurken uitschakelde met zijn Dubbele Tepelstraal.","When he took out a whole street of villains in winter without a coat, using his Double Nipple Beam."],fact:["Hij heeft een kast vol witte T-shirts, maar draagt ze nooit tijdens een missie.","He has a closet full of white T-shirts, but never wears them on a mission."],spoil:["Zijn grootste angst is een koude windvlaag op het verkeerde moment.","His greatest fear is a cold breeze at the wrong moment."]},
 "Zeno":{how:["Hij hoeft niet te trainen: zijn macht hoort gewoon bij zijn plek als Omni-Koning.","He doesn't need to train: his power simply comes with being the Omni-King."],moment:["Tijdens het Tournament of Power wiste hij met één gebaar de universums uit die verloren.","During the Tournament of Power he erased the losing universes with a single gesture."],fact:["Hij noemt Goku zijn vriend en kreeg van hem een knopje om hem op te roepen.","He calls Goku his friend and got a button from him to summon him."],spoil:["In een andere tijdlijn wiste hij alles uit na de chaos rond Zamasu. Die tweede Zeno woont nu ook in het paleis.","In another timeline he erased everything after the chaos around Zamasu. That second Zeno now lives in the palace too."]},
 "Madara Uchiha":{how:["Hij vocht zijn hele leven tegen Hashirama en zette later diens cellen in zijn eigen lichaam om Wood Release te krijgen.","He fought Hashirama his whole life and later put Hashirama's cells into his own body to gain Wood Release."],moment:["Tijdens de oorlog versloeg hij in zijn eentje alle Vijf Kage.","During the war he single-handedly defeated all Five Kage."],fact:["Hij kreeg zijn Eternal Mangekyo Sharingan door de ogen van zijn broer Izuna over te nemen.","He got his Eternal Mangekyo Sharingan by taking his brother Izuna's eyes."],spoil:["Uiteindelijk werd hij verraden door Black Zetsu, die hem alleen gebruikte om Kaguya terug te halen.","In the end he was betrayed by Black Zetsu, who only used him to bring Kaguya back."]},
 "Kaido":{how:["Hij overleefde tientallen executies, martelingen en gevechten tegen de sterksten ter wereld.","He survived dozens of executions, tortures and fights against the strongest in the world."],moment:["Zijn gevecht op het dak van Onigashima tegen de Worst Generation.","His fight on the roof of Onigashima against the Worst Generation."],fact:["Als jongen zat hij in de beruchte bemanning van Rocks D. Xebec.","As a youngster he sailed with the infamous Rocks D. Xebec crew."],spoil:["Hij werd uiteindelijk verslagen door Luffy in Gear 5.","He was finally defeated by Luffy in Gear 5."]},
@@ -1794,7 +1784,6 @@ const dupes=()=>dupList().reduce((a,x)=>a+x.n,0);
 const dupValue=()=>dupList().reduce((a,x)=>a+x.n*RAR[x.c.t].val,0);
 const PACKS={
   std:{price:5,cls:"pk-std",draw:()=>[rnd(),rnd(),rnd()]},
-  ppu:{price:15,cls:"pk-ppu",draw:()=>{const P=pool().filter(c=>c.a==="Prime Papa Universe");return[P.length?P[Math.floor(Math.random()*P.length)]:rnd(),rnd(),rnd()]}},
   s:{price:25,cls:"pk-s",draw:()=>[rnd({S:80,"S+":20}),rnd({S:80,"S+":20}),rnd({S:80,"S+":20})]}
 };
 function rnd(weights){const P=pool(),byT={};P.forEach(c=>(byT[c.t]=byT[c.t]||[]).push(c));
@@ -1814,7 +1803,7 @@ const PT={
  nl:{tabPlay:"Spelen",cards:"Kaarten",fusion:"Fusie",coins:n=>`${n} ${n===1?"munt":"munten"}`,free:n=>n===1?"1 gratis pakje":`${n} gratis pakjes`,
   next:(h,m)=>`Volgend gratis pakje over ${h} u ${m} min`,store:"Pakjeswinkel",
   howGet:"Je verdient munten met elk gevecht bij Wie wint? (1 munt per gevecht) en door je dubbele kaarten in te leveren. Elke dag krijg je ook een gratis standaard pakje.",
-  pk:{std:["Standaard pakje","3 willekeurige kaarten. Alles kan, van Gewoon tot Legendarisch."],ppu:["Prime Papa Universe-pakje","Gegarandeerd 1 kaart uit het Prime Papa Universe, plus 2 willekeurige."],s:["S-tier pakje","3 kaarten van S of hoger. 1 op de 5 kans per kaart op Legendarisch."]},
+  pk:{std:["Standaard pakje","3 willekeurige kaarten. Alles kan, van Gewoon tot Legendarisch."],s:["S-tier pakje","3 kaarten van S of hoger. 1 op de 5 kans per kaart op Legendarisch."]},
   openFree:"Gratis openen",openFor:n=>`Open voor ${n}`,need:n=>`Nog ${n} ${n===1?"munt":"munten"} nodig`,
   tapFlip:"Tik op een kaart om hem om te draaien",flipAll:"Alles omdraaien",packDone:"Alle kaarten staan in je album!",packClose:"Naar mijn album",newC:"NIEUW",dupC:"DUBBEL",album:"Album",of:(a,b)=>`${a} van ${b} verzameld`,
   fAll:"Alles",fOwn:"Verzameld",fMiss:"Ontbreekt",dupTitle:"Dubbele kaarten",dupNone:"Je hebt nog geen dubbele kaarten. Dubbele kaarten komen hier op een stapel.",
@@ -1828,7 +1817,7 @@ const PT={
  en:{tabPlay:"Play",cards:"Cards",fusion:"Fusion",coins:n=>`${n} ${n===1?"coin":"coins"}`,free:n=>n===1?"1 free pack":`${n} free packs`,
   next:(h,m)=>`Next free pack in ${h} h ${m} min`,store:"Pack store",
   howGet:"You earn coins with every fight in Who wins? (1 coin per fight) and by turning in your duplicate cards. You also get a free standard pack every day.",
-  pk:{std:["Standard pack","3 random cards. Anything can happen, from Common to Legendary."],ppu:["Prime Papa Universe pack","Guaranteed 1 card from the Prime Papa Universe, plus 2 random ones."],s:["S-tier pack","3 cards of S or higher. A 1 in 5 chance per card of Legendary."]},
+  pk:{std:["Standard pack","3 random cards. Anything can happen, from Common to Legendary."],s:["S-tier pack","3 cards of S or higher. A 1 in 5 chance per card of Legendary."]},
   openFree:"Open for free",openFor:n=>`Open for ${n}`,need:n=>`${n} more ${n===1?"coin":"coins"} needed`,
   tapFlip:"Tap a card to flip it",flipAll:"Flip all",packDone:"All cards are in your album!",packClose:"Go to my album",newC:"NEW",dupC:"DUPE",album:"Album",of:(a,b)=>`${a} of ${b} collected`,
   fAll:"All",fOwn:"Collected",fMiss:"Missing",dupTitle:"Duplicate cards",dupNone:"You don't have any duplicates yet. Duplicate cards pile up here.",
@@ -1854,7 +1843,7 @@ function renderCardsGame(){const t=pt(),P=pool(),own=P.filter(c=>G.own[c.n]).len
   <div class="album">${RANKED.filter(c=>!c.cid).filter(c=>albumFilter==="all"||(albumFilter==="own")===!!G.own[c.n]).map(c=>G.own[c.n]?`<button type="button" class="ac ${RAR[c.t].cls}" data-go="${c.id}">${badge(c)}<b>${esc(c.n)}</b>${G.own[c.n]>1?`<span class="ac-n">×${G.own[c.n]}</span>`:""}</button>`:`<div class="ac miss ${RAR[c.t].cls}"><span class="mono q"><span>?</span></span><b>???</b><span class="tier t-${tcls(c.t)}">${c.t}</span></div>`).join("")}</div></div>`;
   turnedMsg="";return h}
 /* fusion */
-const SHORT={"Satoru Gojo":"Gojo","Ryomen Sukuna":"Sukuna","Monkey D. Luffy":"Luffy","Monkey D. Garp":"Garp","Roronoa Zoro":"Zoro","Gol D. Roger":"Roger","Portgas D. Ace":"Ace","Trafalgar Law":"Law","Donquixote Doflamingo":"Doflamingo","Charlotte Katakuri":"Katakuri","Dracule Mihawk":"Mihawk","Sosuke Aizen":"Aizen","Isaac Netero":"Netero","Kisuke Urahara":"Urahara","Genryusai Yamamoto":"Yamamoto","Retsu Unohana":"Unohana","Izuku Midoriya (Deku)":"Deku","Katsuki Bakugo":"Bakugo","Shoto Todoroki":"Todoroki","Tomura Shigaraki":"Shigaraki","Kyojuro Rengoku":"Rengoku","Kusuo Saiki":"Saiki","Sung Jinwoo":"Jinwoo","Arataka Reigen":"Reigen","Taro Sakamoto":"Sakamoto","Younger Toguro":"Toguro","Prime Moment Papa":"Papa","Lord Tepelius de Grote":"Tepelius","Shigeo Kageyama (Mob)":"Mob","Big Mom":"Mom","Adult Gon":"Gon","Kid Buu":"Buu"};
+const SHORT={"Satoru Gojo":"Gojo","Ryomen Sukuna":"Sukuna","Monkey D. Luffy":"Luffy","Monkey D. Garp":"Garp","Roronoa Zoro":"Zoro","Gol D. Roger":"Roger","Portgas D. Ace":"Ace","Trafalgar Law":"Law","Donquixote Doflamingo":"Doflamingo","Charlotte Katakuri":"Katakuri","Dracule Mihawk":"Mihawk","Sosuke Aizen":"Aizen","Isaac Netero":"Netero","Kisuke Urahara":"Urahara","Genryusai Yamamoto":"Yamamoto","Retsu Unohana":"Unohana","Izuku Midoriya (Deku)":"Deku","Katsuki Bakugo":"Bakugo","Shoto Todoroki":"Todoroki","Tomura Shigaraki":"Shigaraki","Kyojuro Rengoku":"Rengoku","Kusuo Saiki":"Saiki","Sung Jinwoo":"Jinwoo","Arataka Reigen":"Reigen","Taro Sakamoto":"Sakamoto","Younger Toguro":"Toguro","Shigeo Kageyama (Mob)":"Mob","Big Mom":"Mom","Adult Gon":"Gon","Kid Buu":"Buu"};
 const shortOf=c=>SHORT[c.n]||c.n.replace(/\s*\(.*\)/,"").split(" ")[0];
 function fuseName(a,b){const x=shortOf(a),y=shortOf(b);if(a===b)return (lang==="en"?"Double ":"Dubbele ")+x;
   const m=x.match(/^[^aeiouy]*[aeiouy]+[^aeiouy]?/i),p1=m&&m[0].length<x.length?m[0]:x.slice(0,Math.ceil(x.length/2));
@@ -1863,8 +1852,7 @@ let fuse=null;
 function makeFusion(A,B){const t=pt(),stat=i=>Math.min(100,Math.round(Math.max(A.s[i],B.s[i])*.75+Math.min(A.s[i],B.s[i])*.25+4));
   const pa=P(A),pb=P(B),ma=M(A),mb=M(B),nm=s=>{const k=s.indexOf(":");return k>0&&k<45?s.slice(0,k):s.split(" ").slice(0,3).join(" ")};
   const ra=(A.x||X[A.n]||["u"])[0],rb=(B.x||X[B.n]||["u"])[0],role=ra===rb?ra:(ra==="v"||rb==="v")?"a":ra==="u"||rb==="u"?"u":"a";
-  const ppu=A.a==="Prime Papa Universe"||B.a==="Prime Papa Universe";
-  return{n:fuseName(A,B),a:ppu?"Prime Papa Universe":t.fuGroup,k:Math.min(101,Math.max(A.k,B.k)+2),s:[0,1,2,3,4].map(stat),role,
+  return{n:fuseName(A,B),a:t.fuGroup,k:Math.min(101,Math.max(A.k,B.k)+2),s:[0,1,2,3,4].map(stat),role,
     p:[pa[0],pb[0],t.fuMove(nm(pa[0]),nm(pb[0]))].map(s=>s.slice(0,140)),m:[ma[0],mb[0],t.fuWeak].map(s=>s.slice(0,140)),
     forms:["Fusion"],fights:[],bio:(A===B?t.fuSame(A.n):t.fuBio(A.n,B.n)).slice(0,600),bd:"",img:"",src:[A.n,B.n]}}
 function renderFusion(){const t=pt(),o=[...C].sort((a,b)=>a.n.localeCompare(b.n)).map(c=>`<option value="${c.id}">${esc(c.n)}</option>`).join("");
@@ -1887,7 +1875,7 @@ function doFuse(){const A=C.find(c=>c.id===$("#fuA").value),B=C.find(c=>c.id===$
 function renderPlay(){const el=$("#v-play");if(!el)return;const t=pt();
   const keepA=$("#fuA")&&$("#fuA").value,keepB=$("#fuB")&&$("#fuB").value;
   el.innerHTML=`<div class="seg2 big" role="group">${["cards","fusion"].map(v=>`<button type="button" data-pv="${v}" aria-pressed="${playView===v}">${t[v]}</button>`).join("")}</div>`+(playView==="cards"?renderCardsGame():renderFusion());
-  if(playView==="fusion"){const a=$("#fuA"),b=$("#fuB");a.value=keepA||(C.find(c=>c.n==="Prime Moment Papa")||C[0]).id;b.value=keepB||(C.find(c=>c.n==="Goku")||C[1]).id;fuseStage();if(fuse)showFusion()}}
+  if(playView==="fusion"){const a=$("#fuA"),b=$("#fuB");a.value=keepA||(C.find(c=>c.n==="Saitama")||C[0]).id;b.value=keepB||(C.find(c=>c.n==="Goku")||C[1]).id;fuseStage();if(fuse)showFusion()}}
 function flipCard(el){if(el.classList.contains("on")||el.dataset.busy)return;
   const fin=()=>{if([...document.querySelectorAll(".flip")].every(f=>f.classList.contains("on"))){const d=$("#packDone"),b=$("#flipAll");if(d)d.hidden=false;if(b)b.hidden=true}};
   if(matchMedia("(prefers-reduced-motion: reduce)").matches){el.classList.add("on");fin();return}
