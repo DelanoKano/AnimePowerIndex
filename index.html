@@ -419,6 +419,38 @@ label.btn{display:inline-block}
   .wrap>.tabs button{flex:1 1 auto;display:flex;align-items:center;justify-content:center;text-align:center;padding:9px 4px;font-family:var(--body);font-weight:700;font-size:clamp(.62rem,3.05vw,.86rem);letter-spacing:0;white-space:normal;line-height:1.15;min-width:0;overflow-wrap:normal;word-break:keep-all}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+
+/* ===== Manga layer: screentone, sound effects, slanted panels, impact frames ===== */
+:root{--tone-dots:radial-gradient(rgba(17,17,20,.16) 1px,transparent 1.25px);--tone-lines:repeating-linear-gradient(-45deg,rgba(17,17,20,.12) 0 1px,transparent 1px 5px)}
+:root[data-mode="dark"],:root:not([data-mode])[data-theme="dark"]{--tone-dots:radial-gradient(rgba(242,240,234,.14) 1px,transparent 1.25px);--tone-lines:repeating-linear-gradient(-45deg,rgba(242,240,234,.10) 0 1px,transparent 1px 5px)}
+@media (prefers-color-scheme:dark){:root:not([data-mode]):not([data-theme="light"]){--tone-dots:radial-gradient(rgba(242,240,234,.14) 1px,transparent 1.25px);--tone-lines:repeating-linear-gradient(-45deg,rgba(242,240,234,.10) 0 1px,transparent 1px 5px)}}
+body{background-image:var(--tone-dots);background-size:7px 7px}
+/* hero: speedlines + a big "ゴゴゴ" sound effect, like a JoJo panel */
+.hero{background-image:linear-gradient(115deg,transparent 0 58%,var(--paper) 58%),var(--tone-dots);background-size:auto,6px 6px;background-color:var(--paper)}
+.hero::after{content:"ゴゴゴゴ";position:absolute;right:22px;bottom:18px;transform:rotate(-10deg);white-space:nowrap;font-family:var(--display);
+  font-size:clamp(1.8rem,5vw,3.4rem);line-height:1;letter-spacing:-.02em;color:var(--paper);-webkit-text-stroke:2px var(--ink);text-shadow:4px 4px 0 var(--ink);pointer-events:none}
+.hero>.langs{z-index:5}
+@media (max-width:700px){.hero::after{font-size:1.15rem;right:12px;bottom:12px;-webkit-text-stroke:1.2px var(--ink);text-shadow:2px 2px 0 var(--ink)}}
+h1 em{clip-path:polygon(3% 0,100% 0,97% 100%,0 100%);padding-inline:.32em}
+.eyebrow{display:inline-block;background:var(--ink);color:var(--paper);padding:3px 12px;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+.rl{clip-path:polygon(5px 0,100% 0,calc(100% - 5px) 100%,0 100%);padding-inline:12px}
+/* card heads: a diagonal panel split with screentone on one side */
+.ch{background-image:linear-gradient(110deg,var(--paper) 0 44%,transparent 44%),var(--tone-lines);background-color:var(--paper)}
+.card:nth-child(odd){transform:rotate(-.35deg)}.card:nth-child(even){transform:rotate(.35deg)}
+@media (max-width:700px){.card:nth-child(n){transform:none}}
+.welcome,.verdict,.wallet{background-image:linear-gradient(100deg,var(--paper) 0 72%,transparent 72%),var(--tone-dots);background-size:auto,6px 6px}
+.tabs button[aria-selected="true"]{background-image:var(--tone-lines);background-color:var(--ink)}
+.stats .bar{background-image:var(--tone-dots);background-size:4px 4px}
+/* fights: impact frame — the panel flips to black, white speedlines burst out, fighters invert */
+.boom{letter-spacing:-.02em}
+.arena.hit .boom{color:var(--paper);-webkit-text-stroke:2px var(--ink);text-shadow:4px 4px 0 var(--ink);font-size:2.5rem}
+.arena.impact::before{animation:impactLines .6s ease-out}
+.arena.impact .fighter{animation:impactInv .32s steps(1)}
+@keyframes impactLines{0%{opacity:.95;transform:scale(1.25);background:repeating-conic-gradient(from 0deg at 50% 50%,var(--paper) 0deg 1.2deg,var(--ink) 1.2deg 6deg)}
+  60%{opacity:.6;transform:scale(1.05);background:repeating-conic-gradient(from 0deg at 50% 50%,var(--paper) 0deg 1.2deg,var(--ink) 1.2deg 6deg)}100%{opacity:.08;transform:scale(1)}}
+@keyframes impactInv{0%{filter:invert(1) contrast(1.4)}100%{filter:none}}
+@media (max-width:700px){.arena.hit .boom{font-size:1.8rem}}
+@media (prefers-reduced-motion:reduce){.arena.impact::before,.arena.impact .fighter{animation:none}.card:nth-child(n){transform:none}}
 </style>
 
 <div class="wrap">
@@ -563,7 +595,7 @@ const L={
   winH:(big,n)=>`${big?"Duidelijke winst":"Nipte winst"} voor ${n}`,
   winP:(w,k,m,l)=>`${w} wint op ${k} van de 5 eigenschappen. Maar let op het minpunt van ${w}: ${m}. Daar kan ${l} zijn kans pakken.`,
   scoreLine:(a,b)=>`Krachtscore ${a} tegen ${b}.`,
-  fight:"Vechten!",rematch:"Rematch!",oddsL:"Winkans",tallyL:(n,a,x,b,y)=>`Stand na ${n} ${n===1?"gevecht":"gevechten"}: ${a} ${x} – ${y} ${b}`,draws:n=>n?` (${n}× gelijk)`:"",upsetH:n=>`Stunt! ${n} wint tegen de verwachting in`,kickU:["De grootste stunt van het jaar","Niemand zag dit aankomen","Tegen alle verwachtingen in"],pending:"Tik op Vechten! om te zien wie wint.",winnerW:"WINNAAR",drawW:"GELIJK",booms:["BAM!","POW!","DOEF!","KRAK!","WHAM!"],
+  fight:"Vechten!",rematch:"Rematch!",oddsL:"Winkans",tallyL:(n,a,x,b,y)=>`Stand na ${n} ${n===1?"gevecht":"gevechten"}: ${a} ${x} – ${y} ${b}`,draws:n=>n?` (${n}× gelijk)`:"",upsetH:n=>`Stunt! ${n} wint tegen de verwachting in`,kickU:["De grootste stunt van het jaar","Niemand zag dit aankomen","Tegen alle verwachtingen in"],pending:"Tik op Vechten! om te zien wie wint.",winnerW:"WINNAAR",drawW:"GELIJK",booms:["ドン!","バン!","ドゴォ!","ズドン!","ゴゴゴ"],
   tabPlay:"Spelen",tabMake:"Maak je eigen",vBig:"Groot",vSmall:"Compact",qNone:"Geen character gevonden",collapse:"Klein maken",help:"Hoe werkt het?",wTitle:"Welkom bij de Krachtindex!",wClose:"Begrepen",
   wItems:[["cards","Characters","Hier ben je nu. Tik op een naam voor het verhaal, de krachten en spoilers."],["vs","Wie wint?","Laat twee characters vechten en lees het gevechtsverhaal."],["play","Spelen","Verzamel kaarten met munten en maak fusies."],["make","Maak je eigen","Zet jezelf of je vrienden in de app, met foto."]],mkTitle:"Maak je eigen character",mkIntro:"Je eigen characters worden op dit apparaat bewaard en doen overal mee: in de ranking, de tierlijst en bij Wie wint?",
   fName:"Naam",fAnime:"Uit welke anime of groep?",defAnime:"Mijn characters",fK:"Totale kracht (bepaalt de ranking)",fStats:"Scores",fRole:"Rol",
@@ -586,7 +618,7 @@ const L={
   winH:(big,n)=>`${big?"Clear win":"Narrow win"} for ${n}`,
   winP:(w,k,m,l)=>`${w} wins on ${k} of the 5 stats. But watch out for ${w}'s weakness: ${m}. That's where ${l} could take their chance.`,
   scoreLine:(a,b)=>`Power score ${a} vs ${b}.`,
-  fight:"Fight!",rematch:"Rematch!",oddsL:"Win chance",tallyL:(n,a,x,b,y)=>`Score after ${n} ${n===1?"fight":"fights"}: ${a} ${x} – ${y} ${b}`,draws:n=>n?` (${n} draws)`:"",upsetH:n=>`Upset! ${n} wins against the odds`,kickU:["The upset of the year","Nobody saw this coming","Against all odds"],pending:"Tap Fight! to see who wins.",winnerW:"WINNER",drawW:"DRAW",booms:["BAM!","POW!","BOOM!","CRACK!","WHAM!"],
+  fight:"Fight!",rematch:"Rematch!",oddsL:"Win chance",tallyL:(n,a,x,b,y)=>`Score after ${n} ${n===1?"fight":"fights"}: ${a} ${x} – ${y} ${b}`,draws:n=>n?` (${n} draws)`:"",upsetH:n=>`Upset! ${n} wins against the odds`,kickU:["The upset of the year","Nobody saw this coming","Against all odds"],pending:"Tap Fight! to see who wins.",winnerW:"WINNER",drawW:"DRAW",booms:["ドン!","バン!","ドゴォ!","ズドン!","ゴゴゴ"],
   tabPlay:"Play",tabMake:"Create",vBig:"Large",vSmall:"Compact",qNone:"No character found",collapse:"Collapse",help:"How does it work?",wTitle:"Welcome to the Power Index!",wClose:"Got it",
   wItems:[["cards","Characters","You're here now. Tap a name for the story, powers and spoilers."],["vs","Who wins?","Make two characters fight and read the battle story."],["play","Play","Collect cards with coins and create fusions."],["make","Create","Add yourself or your friends to the app, with a photo."]],mkTitle:"Create your own character",mkIntro:"Your own characters are saved on this device and join everything: the ranking, the tier list and Who wins?",
   fName:"Name",fAnime:"From which anime or group?",defAnime:"My characters",fK:"Overall power (sets the ranking)",fStats:"Stats",fRole:"Role",
@@ -890,7 +922,7 @@ const X={
 "Sesshomaru":["a",["True demon form"],["Inuyasha","Naraku"]],
 "Naraku":["v",[],["Inuyasha","Sesshomaru"]],
 };
-const APP_VERSION="3.3";
+const APP_VERSION="4.0";
 const BD={
 "Monkey D. Luffy":"05-05","Roronoa Zoro":"11-11","Portgas D. Ace":"01-01","Trafalgar Law":"10-06","Shanks":"03-09","Dracule Mihawk":"03-09","Whitebeard":"04-06","Kaido":"05-01","Big Mom":"02-15","Blackbeard":"08-03","Donquixote Doflamingo":"10-23","Charlotte Katakuri":"11-25","Akainu":"08-16","Aokiji":"09-21","Kizaru":"11-23","Monkey D. Garp":"05-02","Gol D. Roger":"12-31",
 "Naruto Uzumaki":"10-10","Sasuke Uchiha":"07-23","Kakashi Hatake":"09-15","Itachi Uchiha":"06-09","Minato Namikaze":"01-25","Jiraiya":"11-11","Might Guy":"01-01","Obito Uchiha":"02-10","Madara Uchiha":"12-24","Hashirama Senju":"10-23","Boruto Uzumaki":"03-27","Pain":"09-19",
