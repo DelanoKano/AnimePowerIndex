@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="nl">
 <meta charset="utf-8">
+<meta name="theme-color" content="#131318">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="De sterkste anime characters: krachten, minpunten, tierlijst en gevechten. Made by Della.">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -8,8 +9,6 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Krachtindex">
 <meta name="application-name" content="Krachtindex">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#121216" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -427,10 +426,6 @@ label.btn{display:inline-block}
 body{background-image:var(--tone-dots);background-size:7px 7px}
 /* hero: speedlines + a big "ゴゴゴ" sound effect, like a JoJo panel */
 .hero{background-image:linear-gradient(115deg,transparent 0 58%,var(--paper) 58%),var(--tone-dots);background-size:auto,6px 6px;background-color:var(--paper)}
-.hero::after{content:"ゴゴゴゴ";position:absolute;right:22px;bottom:18px;transform:rotate(-10deg);white-space:nowrap;font-family:var(--display);
-  font-size:clamp(1.8rem,5vw,3.4rem);line-height:1;letter-spacing:-.02em;color:var(--paper);-webkit-text-stroke:2px var(--ink);text-shadow:4px 4px 0 var(--ink);pointer-events:none}
-.hero>.langs{z-index:5}
-@media (max-width:700px){.hero::after{font-size:1.15rem;right:12px;bottom:12px;-webkit-text-stroke:1.2px var(--ink);text-shadow:2px 2px 0 var(--ink)}}
 h1 em{clip-path:polygon(3% 0,100% 0,97% 100%,0 100%);padding-inline:.32em}
 .eyebrow{display:inline-block;background:var(--ink);color:var(--paper);padding:3px 12px;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%)}
 .rl{clip-path:polygon(5px 0,100% 0,calc(100% - 5px) 100%,0 100%);padding-inline:12px}
@@ -451,6 +446,39 @@ h1 em{clip-path:polygon(3% 0,100% 0,97% 100%,0 100%);padding-inline:.32em}
 @keyframes impactInv{0%{filter:invert(1) contrast(1.4)}100%{filter:none}}
 @media (max-width:700px){.arena.hit .boom{font-size:1.8rem}}
 @media (prefers-reduced-motion:reduce){.arena.impact::before,.arena.impact .fighter{animation:none}.card:nth-child(n){transform:none}}
+
+/* ===== Bold layer (same punch as the Hero app): red title panel, ドン! burst, hard shadows, dark pages ===== */
+:root[data-mode="dark"]{--paper:#131318; --ink:#f4f1ea; --tone:#24242e; --muted:#a9a6b8; --line:#f4f1ea}
+.hero{background-color:#e8344a;background-image:radial-gradient(rgba(0,0,0,.20) 1.5px,transparent 1.8px);background-size:8px 8px;border-color:#111114;box-shadow:6px 6px 0 #000}
+.hero::before{inset:-60%;background:repeating-conic-gradient(from 0deg at 82% 40%,rgba(0,0,0,.55) 0deg 1.2deg,transparent 1.2deg 9deg);opacity:.5}
+.hero::after{content:"ドン!";position:absolute;right:26px;bottom:20px;font-family:var(--display);font-size:clamp(1.5rem,4vw,2.5rem);color:#111114;
+  background:#ffcf1f;padding:.6em .85em;transform:rotate(9deg);pointer-events:none;
+  clip-path:polygon(50% 0%,61% 18%,82% 6%,79% 30%,100% 35%,84% 52%,98% 72%,74% 72%,72% 96%,54% 80%,38% 100%,32% 76%,6% 86%,16% 62%,0% 44%,20% 33%,10% 10%,34% 19%)}
+@media (max-width:700px){.hero::after{display:none}}
+h1{color:#fff;transform:rotate(-2deg);transform-origin:left center;text-shadow:4px 4px 0 #111114;-webkit-text-stroke:1.5px #111114;paint-order:stroke fill}
+h1 em{background:#111114;color:#fff;-webkit-text-stroke:0;text-shadow:none;box-shadow:4px 4px 0 #ffcf1f}
+.hero p.lead{color:#fff;font-weight:500}
+.hero .eyebrow{background:#111114;color:#fff}
+.hero .ver,.hero .ver .helpbtn,.hero .credit{color:#fff}
+.hero .credit b{background:#111114;color:#fff}
+.hero .langs{border-color:#111114;background:#fff}
+.hero .langs button{color:#111114}
+.hero .langs button+button{border-color:#111114}
+.hero .langs button[aria-pressed="true"]{background:#111114;color:#fff}
+.tabs{box-shadow:4px 4px 0 #000;background:var(--paper)}
+.tabs button[aria-selected="true"]{background:#e8344a;background-image:none;color:#fff}
+.card,.cotd,.welcome,.panel,.mkf,.pk-tile,.wallet,.tierlist{box-shadow:5px 5px 0 #000}
+:root[data-mode="light"] .card,:root[data-mode="light"] .cotd,:root[data-mode="light"] .welcome{box-shadow:5px 5px 0 var(--ink)}
+.card{transition:transform .12s,box-shadow .12s}
+@media (hover:hover){.card:hover{transform:translate(-2px,-2px) rotate(0deg);box-shadow:8px 8px 0 #e8344a}}
+.power b{color:#e8344a}
+.stats .bar i{background:#e8344a}
+.btn{box-shadow:3px 3px 0 #000;transition:transform .08s,box-shadow .08s}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #000}
+.btn.primary{background:#e8344a;color:#fff;border-color:var(--ink)}
+.btn.primary:hover{background:#c92238;color:#fff}
+.btn.primary:disabled,.btn.primary[disabled]{background:var(--tone);color:var(--muted);box-shadow:none}
+.cotd{background:linear-gradient(90deg,#ffcf1f 0 8px,var(--paper) 8px)}
 </style>
 
 <div class="wrap">
@@ -922,7 +950,7 @@ const X={
 "Sesshomaru":["a",["True demon form"],["Inuyasha","Naraku"]],
 "Naraku":["v",[],["Inuyasha","Sesshomaru"]],
 };
-const APP_VERSION="4.0";
+const APP_VERSION="4.1";
 const BD={
 "Monkey D. Luffy":"05-05","Roronoa Zoro":"11-11","Portgas D. Ace":"01-01","Trafalgar Law":"10-06","Shanks":"03-09","Dracule Mihawk":"03-09","Whitebeard":"04-06","Kaido":"05-01","Big Mom":"02-15","Blackbeard":"08-03","Donquixote Doflamingo":"10-23","Charlotte Katakuri":"11-25","Akainu":"08-16","Aokiji":"09-21","Kizaru":"11-23","Monkey D. Garp":"05-02","Gol D. Roger":"12-31",
 "Naruto Uzumaki":"10-10","Sasuke Uchiha":"07-23","Kakashi Hatake":"09-15","Itachi Uchiha":"06-09","Minato Namikaze":"01-25","Jiraiya":"11-11","Might Guy":"01-01","Obito Uchiha":"02-10","Madara Uchiha":"12-24","Hashirama Senju":"10-23","Boruto Uzumaki":"03-27","Pain":"09-19",
@@ -1611,10 +1639,10 @@ function show(v){
 }
 
 const root=document.documentElement;
-const isDark=()=>getComputedStyle(root).getPropertyValue("--paper").trim().toLowerCase()==="#121216";
+const isDark=()=>root.getAttribute("data-mode")!=="light";
 function syncMode(){const d=isDark(),b=$("#modeBtn");b.textContent=d?"☀":"☾";
   b.setAttribute("aria-label",lang==="en"?(d?"Light mode":"Dark mode"):(d?"Lichte modus":"Donkere modus"))}
-try{const m=localStorage.getItem("ak-mode");if(m==="dark"||m==="light")root.setAttribute("data-mode",m)}catch(e){}
+root.setAttribute("data-mode","dark");try{const m=localStorage.getItem("ak-mode");if(m==="light")root.setAttribute("data-mode","light")}catch(e){}
 try{matchMedia("(prefers-color-scheme: dark)").addEventListener("change",syncMode)}catch(e){}
 new MutationObserver(syncMode).observe(root,{attributes:true,attributeFilter:["data-theme","data-mode"]});
 document.addEventListener("click",e=>{
